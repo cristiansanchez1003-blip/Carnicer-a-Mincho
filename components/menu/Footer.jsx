@@ -99,6 +99,20 @@ export default function Footer({ settings }) {
           )}
         </div>
 
+        {settings.mapsEmbed && (
+          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+            <iframe
+              src={settings.mapsEmbed}
+              title="Mapa Carnicería Mincho"
+              className="h-56 w-full"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        )}
+
         {hours && (
           <div className="mt-6 rounded-2xl border border-white/10 p-4 text-center">
             <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-mint">
@@ -113,7 +127,7 @@ export default function Footer({ settings }) {
         </p>
 
         <p className="mt-2 text-center text-[11.5px] text-white/35">
-          {lang === 'en' ? 'Made by' : 'Hecho por'}{' '}
+          {lang === 'en' ? 'This menu was made by' : 'Este menú fue hecho por'}{' '}
           <a
             href="https://www.espiritudigital.cl"
             target="_blank"
