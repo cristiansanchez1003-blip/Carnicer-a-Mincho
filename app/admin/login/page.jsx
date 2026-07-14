@@ -39,9 +39,9 @@ export default function LoginPage() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <img
-          src="/logo.jpg"
-          alt="El Café de Pirque"
-          className="mx-auto mb-6 w-56 mix-blend-multiply"
+          src="/logo-light.jpeg"
+          alt="Carnicería Mincho"
+          className="mx-auto mb-6 w-64 rounded-2xl"
         />
 
         <div className="rounded-3xl border border-linen bg-card p-6 shadow-cardHover">
@@ -63,7 +63,7 @@ export default function LoginPage() {
                 autoCapitalize="none"
                 required
                 className="w-full rounded-xl border border-linen bg-paper px-4 py-3 text-[15px] text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-mint"
-                placeholder="marcela"
+                placeholder="Gloria"
               />
             </label>
 
@@ -101,7 +101,7 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-[12px] text-muted">
-          El Café de Pirque · Menú digital
+          Carnicería Mincho · Menú digital
         </p>
       </motion.div>
     </main>

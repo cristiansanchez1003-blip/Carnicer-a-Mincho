@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --paper: #f7f4ee;
-  --ink: #24282a;
-  --mint: #bfe5cb;
-  --forest: #2f6b47;
+  --paper: #f5efe4;
+  --ink: #231f1c;
+  --mint: #ffc93c;
+  --forest: #b3271d;
 }
 
 html {
@@ -54,12 +54,12 @@ body {
   }
 }
 .skeleton {
-  background: linear-gradient(90deg, #edeae2 25%, #e0dcd1 50%, #edeae2 75%);
+  background: linear-gradient(90deg, #ede5d5 25%, #e2d8c4 50%, #ede5d5 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 .dark .skeleton {
-  background: linear-gradient(90deg, #2a2f30 25%, #343a3b 50%, #2a2f30 75%);
+  background: linear-gradient(90deg, #26221f 25%, #322c27 50%, #26221f 75%);
   background-size: 800px 100%;
 }
 
@@ -70,9 +70,9 @@ body {
 
 /* Textura sutil de puntos para el hero */
 .hero-texture {
-  background-image: radial-gradient(rgba(47, 107, 71, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(179, 39, 29, 0.08) 1px, transparent 1px);
   background-size: 18px 18px;
 }
 .dark .hero-texture {
-  background-image: radial-gradient(rgba(191, 229, 203, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 201, 60, 0.06) 1px, transparent 1px);
 }

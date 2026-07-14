@@ -17,7 +17,7 @@ export default function QRSection() {
     const url = canvas.toDataURL('image/png')
     const link = document.createElement('a')
     link.href = url
-    link.download = 'qr-menu-cafe-de-pirque.png'
+    link.download = 'qr-menu-carniceria-mincho.png'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

@@ -5,25 +5,21 @@ import { translate } from '@/lib/i18n'
 
 const AppContext = createContext(null)
 
-const LANG_KEY = 'cafe-pirque-lang'
-const THEME_KEY = 'cafe-pirque-theme'
+const LANG_KEY = 'mincho-lang'
+const THEME_KEY = 'mincho-theme'
 
-// Provee idioma (es/en) y tema (light/dark) a todo el árbol del menú público,
-// con persistencia en localStorage y detección de preferencia del sistema
-// solo para el tema en la primera visita.
+// Provee idioma (fijo en español) y tema (dark/light) a todo el árbol del
+// menú público. El tema por defecto es DARK (letrero Mincho sobre negro);
+// la elección del cliente se persiste en localStorage.
 export function AppProvider({ children }) {
   const [lang, setLangState] = useState('es')
-  const [theme, setThemeState] = useState('light')
+  const [theme, setThemeState] = useState('dark')
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const storedLang = window.localStorage.getItem(LANG_KEY)
     const storedTheme = window.localStorage.getItem(THEME_KEY)
-    if (storedLang === 'es' || storedLang === 'en') setLangState(storedLang)
     if (storedTheme === 'light' || storedTheme === 'dark') {
       setThemeState(storedTheme)
-    } else if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
-      setThemeState('dark')
     }
     setReady(true)
   }, [])

@@ -13,7 +13,7 @@ export default function AdminHeader({ dirty, saving, onSave }) {
   return (
     <header className="sticky top-0 z-40 border-b border-linen bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-        <img src="/logo.jpg" alt="El Café de Pirque" className="h-9 mix-blend-multiply" />
+        <img src="/logo-light.jpeg" alt="Carnicería Mincho" className="h-9 rounded-md" />
         <span className="hidden text-[13px] font-bold text-muted sm:block">Panel admin</span>
 
         <div className="ml-auto flex items-center gap-2">

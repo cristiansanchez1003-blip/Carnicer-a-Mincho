@@ -6,7 +6,7 @@ import { useApp } from '@/contexts/AppContext'
 
 export default function Hero({ settings }) {
   const { scrollY } = useScroll()
-  const { lang } = useApp()
+  const { lang, theme } = useApp()
   // Parallax sutil: el logo se desplaza y desvanece al hacer scroll
   const y = useTransform(scrollY, [0, 300], [0, 60])
   const opacity = useTransform(scrollY, [0, 260], [1, 0.25])
@@ -16,15 +16,16 @@ export default function Hero({ settings }) {
 
   return (
     <header className="hero-texture relative overflow-hidden bg-paper pb-8 pt-10 dark:bg-paperdark">
-      {/* halo verde decorativo */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-mint/40 blur-3xl dark:bg-forest/20" />
-      <div className="pointer-events-none absolute -left-20 top-32 h-48 w-48 rounded-full bg-mint/30 blur-3xl dark:bg-forest/15" />
+      {/* halos decorativos con los colores del letrero */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-mint/30 blur-3xl dark:bg-forest/25" />
+      <div className="pointer-events-none absolute -left-20 top-32 h-48 w-48 rounded-full bg-forest/15 blur-3xl dark:bg-mint/10" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto max-w-lg px-6">
         <motion.img
-          src="/logo.jpg"
-          alt="El Café de Pirque"
-          className="mx-auto w-full max-w-[320px] mix-blend-multiply dark:mix-blend-normal dark:rounded-2xl"
+          key={theme}
+          src={theme === 'dark' ? '/logo-dark.jpeg' : '/logo-light.jpeg'}
+          alt="Carnicería Mincho"
+          className="mx-auto w-full max-w-[340px] rounded-2xl"
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -65,7 +66,7 @@ export default function Hero({ settings }) {
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              Pirque
+              San José de Maipo
             </a>
           )}
         </motion.div>

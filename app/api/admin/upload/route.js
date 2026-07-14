@@ -49,7 +49,7 @@ export async function POST(request) {
   const dataUri = `data:${file.type};base64,${buffer.toString('base64')}`
 
   const timestamp = Math.floor(Date.now() / 1000)
-  const folder = 'cafe-de-pirque'
+  const folder = 'carniceria-mincho'
   const toSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`
   const signature = crypto.createHash('sha1').update(toSign).digest('hex')
 

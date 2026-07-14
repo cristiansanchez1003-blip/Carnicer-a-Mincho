@@ -16,18 +16,18 @@ const lato = Lato({
 })
 
 export const metadata = {
-  title: 'El Café de Pirque — Menú Digital',
+  title: 'Carnicería Mincho — Menú Digital',
   description:
-    'Menú digital de El Café de Pirque. Cafés, desayunos, sándwiches, tortas y más en Pirque, Chile.',
+    'Menú digital de Carnicería Mincho. Cortes de vacuno, cerdo, pollo, cordero y embutidos en San José de Maipo, Chile.',
   openGraph: {
-    title: 'El Café de Pirque',
-    description: 'Nuestro menú, siempre fresco. Escanea, mira y disfruta.',
+    title: 'Carnicería Mincho',
+    description: 'Carnes seleccionadas y atención de barrio. Escanea y mira nuestros cortes.',
     type: 'website',
   },
 }
 
 export const viewport = {
-  themeColor: '#24282A',
+  themeColor: '#151312',
   width: 'device-width',
   initialScale: 1,
 }

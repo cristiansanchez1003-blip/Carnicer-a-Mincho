@@ -2,20 +2,12 @@
 
 import { useApp } from '@/contexts/AppContext'
 
-// Cluster compacto de controles: idioma (ES/EN) y tema (claro/oscuro).
-// Pensado para vivir dentro de la barra sticky, siempre a mano.
+// Control de tema (oscuro/claro) dentro de la barra sticky, siempre a mano.
 export default function ControlsBar() {
-  const { lang, toggleLang, theme, toggleTheme, t } = useApp()
+  const { theme, toggleTheme, t } = useApp()
 
   return (
     <div className="flex shrink-0 items-center gap-1.5">
-      <button
-        onClick={toggleLang}
-        aria-label="Cambiar idioma"
-        className="flex h-8 min-w-[38px] items-center justify-center rounded-full border border-linen bg-card px-2 text-[12px] font-bold text-ink dark:border-linendark dark:bg-carddark dark:text-paper"
-      >
-        {lang === 'es' ? 'ES' : 'EN'}
-      </button>
       <button
         onClick={toggleTheme}
         aria-label={theme === 'light' ? t('themeToggleDark') : t('themeToggleLight')}

@@ -66,7 +66,7 @@ export default function Footer({ settings }) {
             <ContactLink
               href={settings.instagram}
               label={t('instagram')}
-              sub={settings.instagramHandle || '@elcafedepirque'}
+              sub={settings.instagramHandle || 'Instagram'}
             >
               <svg className="h-5.5 w-5.5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
@@ -109,7 +109,7 @@ export default function Footer({ settings }) {
         )}
 
         <p className="mt-8 text-center text-[11.5px] text-white/35">
-          © {new Date().getFullYear()} {settings.name || 'El Café de Pirque'} · Pirque, Chile
+          © {new Date().getFullYear()} {settings.name || 'Carnicería Mincho'} · San José de Maipo, Chile
         </p>
 
         <p className="mt-2 text-center text-[11.5px] text-white/35">

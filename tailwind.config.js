@@ -10,21 +10,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Paleta tomada del logotipo: charcoal + verde menta sobre papel cálido
-        paper: '#F7F4EE',
-        card: '#FFFFFF',
-        ink: '#24282A',
-        muted: '#6E7370',
-        mint: '#BFE5CB',
-        mintsoft: '#E9F5ED',
-        forest: '#2F6B47',
-        linen: '#E6E1D6',
+        // Paleta tomada del letrero Mincho: rojo + amarillo + azul sobre
+        // crema madera (light) y negro carbón (dark). Se conservan los
+        // NOMBRES de tokens del proyecto original para no tocar componentes:
+        // mint = acento (amarillo letrero) · forest = acción/precios (rojo letrero)
+        paper: '#F5EFE4',
+        card: '#FFFCF5',
+        ink: '#231F1C',
+        muted: '#7A716B',
+        mint: '#FFC93C',
+        mintsoft: '#FBEED3',
+        forest: '#B3271D',
+        linen: '#E8DFCE',
         gold: '#C9A227',
-        // Variantes para modo oscuro (mismo espíritu: charcoal + menta)
-        paperdark: '#1B1E1F',
-        carddark: '#242829',
-        linendark: '#343A3B',
-        muteddark: '#9BA3A0',
+        azul: '#2E6FB7',
+        rojo: '#D63426',
+        // Variantes para modo oscuro (negro carbón del letrero)
+        paperdark: '#151312',
+        carddark: '#211E1B',
+        linendark: '#3A342E',
+        muteddark: '#ABA199',
       },
       fontFamily: {
         playfair: ['var(--font-playfair)', 'serif'],
