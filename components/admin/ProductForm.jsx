@@ -20,6 +20,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
         name: product.name || '',
         description: product.description || '',
         price: product.price ?? '',
+        unit: product.unit || 'kg',
         image: product.image || '',
         available: product.available !== false,
         sort: product.sort || 0,
@@ -193,20 +194,35 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                 </label>
 
                 <label className="block">
-                  <span className="mb-1 block text-[12.5px] font-bold text-ink/70">Categoría *</span>
+                  <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
+                    Se vende *
+                  </span>
                   <select
-                    value={form.categoryId}
-                    onChange={(e) => set('categoryId', e.target.value)}
+                    value={form.unit}
+                    onChange={(e) => set('unit', e.target.value)}
                     className={inputCls}
                   >
-                    {categories.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.emoji} {c.name}
-                      </option>
-                    ))}
+                    <option value="kg">Por kilo ($/kg)</option>
+                    <option value="un">Por unidad (c/u)</option>
+                    <option value="docena">Por docena</option>
                   </select>
                 </label>
               </div>
+
+              <label className="block">
+                <span className="mb-1 block text-[12.5px] font-bold text-ink/70">Categoría *</span>
+                <select
+                  value={form.categoryId}
+                  onChange={(e) => set('categoryId', e.target.value)}
+                  className={inputCls}
+                >
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.emoji} {c.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
 
               <label className="flex items-center justify-between rounded-xl border border-linen bg-paper px-4 py-3">
                 <span className="text-[14px] font-bold text-ink">Disponible</span>

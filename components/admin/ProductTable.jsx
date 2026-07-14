@@ -1,6 +1,6 @@
 'use client'
 
-import { formatCLP } from '@/lib/format'
+import { formatPrice } from '@/lib/format'
 
 // Lista de productos de una categoría con acciones rápidas:
 // editar, disponibilidad, reordenar y eliminar.
@@ -31,7 +31,7 @@ export default function ProductTable({
           <button onClick={() => onEdit(p)} className="min-w-0 flex-1 text-left">
             <span className="block truncate text-[13.5px] font-bold text-ink">{p.name}</span>
             <span className="block text-[12.5px] font-semibold text-forest">
-              {formatCLP(p.price)}
+              {formatPrice(p.price, p.unit)}
               {p.available === false && (
                 <span className="ml-2 text-[11px] font-bold uppercase text-ink/40">
                   No disponible

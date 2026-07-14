@@ -23,11 +23,24 @@ export default function SettingsForm({ settings, onSave }) {
     { key: 'slogan', label: 'Eslogan', type: 'text' },
     { key: 'hours', label: 'Horario (se muestra en el menú)', type: 'text' },
     { key: 'address', label: 'Dirección', type: 'text' },
-    { key: 'mapsUrl', label: 'Link de Google Maps', type: 'url' },
-    { key: 'whatsapp', label: 'WhatsApp (solo números, ej: 56962371200)', type: 'text' },
-    { key: 'instagram', label: 'Link de Instagram', type: 'url' },
-    { key: 'instagramHandle', label: 'Usuario de Instagram (ej: @elcafedepirque)', type: 'text' },
-    { key: 'email', label: 'Correo de contacto', type: 'email' },
+    { key: 'mapsUrl', label: 'Link de Google Maps (botón "Cómo llegar")', type: 'url' },
+    {
+      key: 'mapsEmbed',
+      label: 'Mapa embebido (URL de Google Maps terminada en &output=embed)',
+      type: 'url',
+    },
+    { key: 'whatsapp', label: 'WhatsApp (solo números, ej: 56912345678)', type: 'text' },
+    {
+      key: 'instagram',
+      label: 'Link de Instagram (opcional — si queda vacío no se muestra)',
+      type: 'url',
+    },
+    { key: 'instagramHandle', label: 'Usuario de Instagram (ej: @carniceriamincho)', type: 'text' },
+    {
+      key: 'email',
+      label: 'Correo de contacto (opcional — si queda vacío no se muestra)',
+      type: 'email',
+    },
   ]
 
   return (
