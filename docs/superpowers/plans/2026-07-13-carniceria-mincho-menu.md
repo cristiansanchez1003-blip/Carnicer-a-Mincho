@@ -1,6 +1,6 @@
 # Menú Digital Carnicería Mincho — Plan de Implementación
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Menú digital con QR y panel de administración para Carnicería Mincho, portando la arquitectura probada de El Café de Pirque.
 
@@ -32,7 +32,7 @@
 **Interfaces:**
 - Produces: proyecto Next.js que compila y levanta en dev; alias `@/` (jsconfig); `contexts/AppContext.jsx` exporta `useApp()` con `{ lang, toggleLang, theme, toggleTheme, t }`; `lib/format.js` exporta `formatCLP(value)`.
 
-- [ ] **Step 1: Copiar archivos fuente** con robocopy, respetando las exclusiones listadas arriba:
+- [x] **Step 1: Copiar archivos fuente** con robocopy, respetando las exclusiones listadas arriba:
 
 ```powershell
 $src = "C:\Users\cristian1\Desktop\Cafetería de Pirque"; $dst = "C:\Users\cristian1\Desktop\Carnicería Mincho"
@@ -47,16 +47,16 @@ Copy-Item "$dst\Logotipo mincho dark.jpeg" "$dst\public\logo-dark.jpeg"
 Copy-Item "$dst\Logotipo mincho light.jpeg" "$dst\public\logo-light.jpeg"
 ```
 
-- [ ] **Step 2: `data/menu.json` mínimo provisional** — `{ "settings": {…Mincho…}, "categories": [], "products": [] }` para que el build no falle antes de Task 3.
+- [x] **Step 2: `data/menu.json` mínimo provisional** — `{ "settings": {…Mincho…}, "categories": [], "products": [] }` para que el build no falle antes de Task 3.
 
-- [ ] **Step 3: package.json** — cambiar `name` a `carniceria-mincho` y `description` a `Menú digital para Carnicería Mincho`.
+- [x] **Step 3: package.json** — cambiar `name` a `carniceria-mincho` y `description` a `Menú digital para Carnicería Mincho`.
 
-- [ ] **Step 4: Instalar y verificar build**
+- [x] **Step 4: Instalar y verificar build**
 
 Run: `npm install` y luego `npm run build`
 Expected: build OK (warnings aceptables, cero errores).
 
-- [ ] **Step 5: Commit** — `chore: scaffold desde El Café de Pirque + logos Mincho`
+- [x] **Step 5: Commit** — `chore: scaffold desde El Café de Pirque + logos Mincho`
 
 ### Task 2: Identidad Mincho — paleta, fuentes, tema oscuro por defecto, logos por tema
 
@@ -67,14 +67,14 @@ Expected: build OK (warnings aceptables, cero errores).
 - Consumes: `useApp()` de Task 1.
 - Produces: tokens Tailwind `mincho.red #D63426`, `mincho.yellow #FFC93C`, `mincho.blue #2E6FB7`, `mincho.coal #111111`, `mincho.cream #F5EFE4` (además se re-mapean los tokens existentes de la cafetería — `paper`, `ink`, `mint`, `pine`, `card`, `linen` y sus variantes `*dark` — a la paleta Mincho para no tocar cada componente); helper de logo: `theme === 'dark' ? '/logo-dark.jpeg' : '/logo-light.jpeg'`.
 
-- [ ] **Step 1: Leer los archivos a modificar** (`tailwind.config.js`, `globals.css`, `layout.jsx`, `AppContext.jsx`, `Hero.jsx`, `login/page.jsx`) para mapear tokens y puntos de cambio exactos.
-- [ ] **Step 2: Re-mapear paleta en `tailwind.config.js`**: valores light → tonos crema/carbón/rojo Mincho; valores dark → carbón/rojo/amarillo. Mantener los NOMBRES de tokens existentes para no reescribir componentes.
-- [ ] **Step 3: `AppContext.jsx`**: estado inicial `theme = 'dark'` (y si no hay valor en `localStorage`, usar `'dark'`); `lang` fijo `'es'`.
-- [ ] **Step 4: `ControlsBar.jsx`**: eliminar el botón de idioma; dejar solo el toggle de tema.
-- [ ] **Step 5: `Hero.jsx` y `login/page.jsx`**: usar el logo según `theme`. `layout.jsx`: title `Carnicería Mincho — Menú`, description con San José de Maipo. Fuentes: mantener Playfair Display + Lato (espíritu de letrero clásico, ya cargadas).
-- [ ] **Step 6: `lib/i18n.js`**: adaptar textos (`heroSlogan: 'Carnes seleccionadas y atención de barrio en San José de Maipo'`, `contactSectionSubtitle: 'Encargos y consultas'`, etc.). Solo diccionario `es` importa.
-- [ ] **Step 7: Verificar** — `npm run dev`, abrir `/menu`: carga en dark con logo dark; toggle cambia a light con logo light y persiste al recargar.
-- [ ] **Step 8: Commit** — `feat: identidad visual Mincho con dark mode por defecto`
+- [x] **Step 1: Leer los archivos a modificar** (`tailwind.config.js`, `globals.css`, `layout.jsx`, `AppContext.jsx`, `Hero.jsx`, `login/page.jsx`) para mapear tokens y puntos de cambio exactos.
+- [x] **Step 2: Re-mapear paleta en `tailwind.config.js`**: valores light → tonos crema/carbón/rojo Mincho; valores dark → carbón/rojo/amarillo. Mantener los NOMBRES de tokens existentes para no reescribir componentes.
+- [x] **Step 3: `AppContext.jsx`**: estado inicial `theme = 'dark'` (y si no hay valor en `localStorage`, usar `'dark'`); `lang` fijo `'es'`.
+- [x] **Step 4: `ControlsBar.jsx`**: eliminar el botón de idioma; dejar solo el toggle de tema.
+- [x] **Step 5: `Hero.jsx` y `login/page.jsx`**: usar el logo según `theme`. `layout.jsx`: title `Carnicería Mincho — Menú`, description con San José de Maipo. Fuentes: mantener Playfair Display + Lato (espíritu de letrero clásico, ya cargadas).
+- [x] **Step 6: `lib/i18n.js`**: adaptar textos (`heroSlogan: 'Carnes seleccionadas y atención de barrio en San José de Maipo'`, `contactSectionSubtitle: 'Encargos y consultas'`, etc.). Solo diccionario `es` importa.
+- [x] **Step 7: Verificar** — `npm run dev`, abrir `/menu`: carga en dark con logo dark; toggle cambia a light con logo light y persiste al recargar.
+- [x] **Step 8: Commit** — `feat: identidad visual Mincho con dark mode por defecto`
 
 ### Task 3: Catálogo semilla + unidad de venta en el modelo
 
@@ -148,9 +148,9 @@ Expected: build OK (warnings aceptables, cero errores).
 | otros | Carbón de espino (saco 5 kg) | 7990 | un |
 | otros | Queso mantecoso | 10990 | kg |
 
-- [ ] **Step 1: Escribir `data/menu.json`** con la estructura de la cafetería (`settings`, `categories[]`, `products[]` con `id` slug, `category`, `name`, `description`, `price`, `unit`, `image`, `available`, `sort`). Sin campos `*_en`.
-- [ ] **Step 2: Verificar** — `/menu` muestra las 6 categorías y los 40 productos; `/api/menu` responde el JSON.
-- [ ] **Step 3: Commit** — `feat: catálogo semilla de carnicería chilena con unidad de venta`
+- [x] **Step 1: Escribir `data/menu.json`** con la estructura de la cafetería (`settings`, `categories[]`, `products[]` con `id` slug, `category`, `name`, `description`, `price`, `unit`, `image`, `available`, `sort`). Sin campos `*_en`.
+- [x] **Step 2: Verificar** — `/menu` muestra las 6 categorías y los 40 productos; `/api/menu` responde el JSON.
+- [x] **Step 3: Commit** — `feat: catálogo semilla de carnicería chilena con unidad de venta`
 
 ### Task 4: Unidad de venta en la UI pública
 
@@ -170,10 +170,10 @@ export function formatPrice(price, unit) {
 }
 ```
 
-- [ ] **Step 1: Agregar `formatPrice` a `lib/format.js`** (código de arriba).
-- [ ] **Step 2: Usarlo en `ProductCard.jsx` y `ProductModal.jsx`** en lugar de `formatCLP` donde se muestra el precio del producto.
-- [ ] **Step 3: Verificar** — tarjetas muestran `$12.990 /kg`, huevos `$3.490 /docena`, carbón `$7.990 c/u`.
-- [ ] **Step 4: Commit** — `feat: precios con unidad de venta en menú público`
+- [x] **Step 1: Agregar `formatPrice` a `lib/format.js`** (código de arriba).
+- [x] **Step 2: Usarlo en `ProductCard.jsx` y `ProductModal.jsx`** en lugar de `formatCLP` donde se muestra el precio del producto.
+- [x] **Step 3: Verificar** — tarjetas muestran `$12.990 /kg`, huevos `$3.490 /docena`, carbón `$7.990 c/u`.
+- [x] **Step 4: Commit** — `feat: precios con unidad de venta en menú público`
 
 ### Task 5: Footer — mapa embebido, Instagram opcional, crédito Espíritu Digital
 
@@ -183,8 +183,8 @@ export function formatPrice(price, unit) {
 **Interfaces:**
 - Consumes: `settings.mapsEmbed`, `settings.instagram` (Task 3).
 
-- [ ] **Step 1: Leer `Footer.jsx`** del port para ubicar bloques de contacto y crédito.
-- [ ] **Step 2: Mapa embebido** — bajo la dirección, iframe responsivo:
+- [x] **Step 1: Leer `Footer.jsx`** del port para ubicar bloques de contacto y crédito.
+- [x] **Step 2: Mapa embebido** — bajo la dirección, iframe responsivo:
 
 ```jsx
 {settings.mapsEmbed && (
@@ -194,10 +194,10 @@ export function formatPrice(price, unit) {
 )}
 ```
 
-- [ ] **Step 3: Canales condicionales** — Instagram y correo solo se renderizan si el valor no está vacío (WhatsApp y dirección siempre).
-- [ ] **Step 4: Crédito** — texto exacto `Este menú fue hecho por Espíritu Digital` con link a `https://www.espiritudigital.cl` (ajustar el bloque existente).
-- [ ] **Step 5: Verificar** — footer muestra mapa interactivo de Comercio 19881, sin Instagram ni correo, crédito clickeable.
-- [ ] **Step 6: Commit** — `feat: footer con mapa embebido y crédito Espíritu Digital`
+- [x] **Step 3: Canales condicionales** — Instagram y correo solo se renderizan si el valor no está vacío (WhatsApp y dirección siempre).
+- [x] **Step 4: Crédito** — texto exacto `Este menú fue hecho por Espíritu Digital` con link a `https://www.espiritudigital.cl` (ajustar el bloque existente).
+- [x] **Step 5: Verificar** — footer muestra mapa interactivo de Comercio 19881, sin Instagram ni correo, crédito clickeable.
+- [x] **Step 6: Commit** — `feat: footer con mapa embebido y crédito Espíritu Digital`
 
 ### Task 6: Panel admin — unidad de venta y ajustes de carnicería
 
@@ -208,31 +208,31 @@ export function formatPrice(price, unit) {
 - Consumes: `formatPrice` (Task 4), campo `unit` (Task 3).
 - Produces: `<select>` de unidad en el form (`kg` → “por kilo ($/kg)”, `un` → “por unidad (c/u)”, `docena` → “por docena”), default `kg`; SettingsForm con campo `mapsEmbed` y ayuda “pega aquí la URL de Google Maps con &output=embed”; Instagram marcado “(opcional — si lo dejas vacío no se muestra)”.
 
-- [ ] **Step 1: Leer los 4 archivos** para ubicar el form de producto y el form de ajustes.
-- [ ] **Step 2: `ProductForm.jsx`** — agregar `<select name="unit">` con las 3 opciones, persistiendo en el producto; default `kg`.
-- [ ] **Step 3: `ProductTable.jsx`** — columna/etiqueta de precio usando `formatPrice(p.price, p.unit)`.
-- [ ] **Step 4: `SettingsForm.jsx`** — agregar campo `mapsEmbed`; etiquetar Instagram y correo como opcionales.
-- [ ] **Step 5: Verificar** — login → crear producto de prueba con unidad `docena`, ver que aparece en `/menu` con `/docena`; editar ajustes y ver reflejo en footer. Eliminar el producto de prueba.
-- [ ] **Step 6: Commit** — `feat: panel admin con unidad de venta y ajustes de carnicería`
+- [x] **Step 1: Leer los 4 archivos** para ubicar el form de producto y el form de ajustes.
+- [x] **Step 2: `ProductForm.jsx`** — agregar `<select name="unit">` con las 3 opciones, persistiendo en el producto; default `kg`.
+- [x] **Step 3: `ProductTable.jsx`** — columna/etiqueta de precio usando `formatPrice(p.price, p.unit)`.
+- [x] **Step 4: `SettingsForm.jsx`** — agregar campo `mapsEmbed`; etiquetar Instagram y correo como opcionales.
+- [x] **Step 5: Verificar** — login → crear producto de prueba con unidad `docena`, ver que aparece en `/menu` con `/docena`; editar ajustes y ver reflejo en footer. Eliminar el producto de prueba.
+- [x] **Step 6: Commit** — `feat: panel admin con unidad de venta y ajustes de carnicería`
 
 ### Task 7: Imágenes de cortes (Unsplash)
 
 **Files:**
 - Modify: `data/menu.json` (campo `image` de los productos)
 
-- [ ] **Step 1: Buscar en Unsplash** fotos acordes por grupo (vacuno crudo premium, costillar cerdo, pollo, cordero, longanizas/embutidos, huevos, carbón, queso). Obtener URLs directas `https://images.unsplash.com/photo-<id>?w=800&q=80`.
-- [ ] **Step 2: Verificar cada URL** con `curl -sI <url>` → `HTTP/2 200` y `content-type: image/*`. Descartar las que fallen.
-- [ ] **Step 3: Asignar** las URLs verificadas al campo `image` (reutilizar la misma foto en cortes similares es aceptable; producto sin foto adecuada queda `""` y usa el placeholder del componente `ProductImage`).
-- [ ] **Step 4: Configurar dominios remotos** — verificar que `next.config.js` permita `images.unsplash.com` (agregar a `remotePatterns` si falta).
-- [ ] **Step 5: Verificar** — `/menu` muestra fotos en tarjetas y modal sin imágenes rotas.
-- [ ] **Step 6: Commit** — `feat: imágenes placeholder de Unsplash para el catálogo`
+- [x] **Step 1: Buscar en Unsplash** fotos acordes por grupo (vacuno crudo premium, costillar cerdo, pollo, cordero, longanizas/embutidos, huevos, carbón, queso). Obtener URLs directas `https://images.unsplash.com/photo-<id>?w=800&q=80`.
+- [x] **Step 2: Verificar cada URL** con `curl -sI <url>` → `HTTP/2 200` y `content-type: image/*`. Descartar las que fallen.
+- [x] **Step 3: Asignar** las URLs verificadas al campo `image` (reutilizar la misma foto en cortes similares es aceptable; producto sin foto adecuada queda `""` y usa el placeholder del componente `ProductImage`).
+- [x] **Step 4: Configurar dominios remotos** — verificar que `next.config.js` permita `images.unsplash.com` (agregar a `remotePatterns` si falta).
+- [x] **Step 5: Verificar** — `/menu` muestra fotos en tarjetas y modal sin imágenes rotas.
+- [x] **Step 6: Commit** — `feat: imágenes placeholder de Unsplash para el catálogo`
 
 ### Task 8: Credenciales, README y verificación final
 
 **Files:**
 - Create: `.env.local`, `.env.local.example`, `README.md`
 
-- [ ] **Step 1: `.env.local`** (no se commitea; `.gitignore` ya lo excluye):
+- [x] **Step 1: `.env.local`** (no se commitea; `.gitignore` ya lo excluye):
 
 ```env
 ADMIN_USER=Gloria
@@ -240,11 +240,11 @@ ADMIN_PASSWORD=carnicería mincho 2026
 AUTH_SECRET=<generar: 64 caracteres aleatorios>
 ```
 
-- [ ] **Step 2: `.env.local.example`** — mismas claves más `GITHUB_TOKEN`, `GITHUB_REPO`, `GITHUB_BRANCH`, `CLOUDINARY_*`, `NEXT_PUBLIC_SITE_URL`, con comentarios (adaptar del ejemplo de la cafetería).
-- [ ] **Step 3: `README.md`** — adaptación del README de la cafetería: nombre, dirección, credenciales por variable de entorno, instrucciones Vercel/GitHub/Cloudinary, estructura.
-- [ ] **Step 4: Build final** — `npm run build` → cero errores.
-- [ ] **Step 5: Verificación manual completa** — dark por defecto y toggle persistente; scrollspy; modal con unidad; footer (mapa, WhatsApp, horario, sin Instagram, crédito Espíritu Digital → espiritudigital.cl); login Gloria; CRUD producto; QR PNG descargable.
-- [ ] **Step 6: Commit** — `docs: README y configuración de entorno` y luego commit final si quedaron ajustes.
+- [x] **Step 2: `.env.local.example`** — mismas claves más `GITHUB_TOKEN`, `GITHUB_REPO`, `GITHUB_BRANCH`, `CLOUDINARY_*`, `NEXT_PUBLIC_SITE_URL`, con comentarios (adaptar del ejemplo de la cafetería).
+- [x] **Step 3: `README.md`** — adaptación del README de la cafetería: nombre, dirección, credenciales por variable de entorno, instrucciones Vercel/GitHub/Cloudinary, estructura.
+- [x] **Step 4: Build final** — `npm run build` → cero errores.
+- [x] **Step 5: Verificación manual completa** — dark por defecto y toggle persistente; scrollspy; modal con unidad; footer (mapa, WhatsApp, horario, sin Instagram, crédito Espíritu Digital → espiritudigital.cl); login Gloria; CRUD producto; QR PNG descargable.
+- [x] **Step 6: Commit** — `docs: README y configuración de entorno` y luego commit final si quedaron ajustes.
 
 ---
 
