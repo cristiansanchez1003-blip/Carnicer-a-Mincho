@@ -57,7 +57,7 @@
       "description": "El corte más blando del vacuno. Ideal para la plancha, medallones o un lomo a lo pobre de lujo.",
       "price": 22990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 1
     },
@@ -68,7 +68,7 @@
       "description": "Infiltrado y jugoso, el rey de la parrilla chilena. Perfecto para asar entero o en bistecs gruesos.",
       "price": 16990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 2
     },
@@ -79,7 +79,7 @@
       "description": "Magro y parejo, de sabor suave. Excelente a la parrilla o a la plancha en churrascos.",
       "price": 15990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 3
     },
@@ -90,7 +90,7 @@
       "description": "Corte parrillero de sabor intenso y textura única. Vuelta y vuelta a fuego fuerte.",
       "price": 17990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 4
     },
@@ -101,7 +101,7 @@
       "description": "Clásico de los asados chilenos, con su capa de grasa que lo mantiene jugoso a las brasas.",
       "price": 13990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 5
     },
@@ -112,7 +112,7 @@
       "description": "Tierna y sabrosa, ideal al horno con papas doradas o a la parrilla en cortes gruesos.",
       "price": 14990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 6
     },
@@ -123,7 +123,7 @@
       "description": "Con hueso y bien infiltrado, para la parrilla a fuego lento o una cazuela contundente.",
       "price": 12990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 7
     },
@@ -134,7 +134,7 @@
       "description": "El corte de las cocinas de fondo: al horno por horas queda tierna y melosa.",
       "price": 13490,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 8
     },
@@ -145,7 +145,7 @@
       "description": "Magra y versátil. Perfecta para bistecs a la plancha, escalopas o carne mechada.",
       "price": 12990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1588347818036-558601350947?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 9
     },
@@ -167,7 +167,7 @@
       "description": "Sabroso y económico, para churrascos, chorrillanas o a las brasas a fuego lento.",
       "price": 10990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 11
     },
@@ -233,7 +233,7 @@
       "description": "El secreto del maestro carnicero: sabroso, firme y parrillero por excelencia.",
       "price": 11990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 17
     },
@@ -244,7 +244,7 @@
       "description": "Molida del día con cortes seleccionados. Para empanadas, tallarines y hamburguesas caseras.",
       "price": 9490,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1612078894671-f11ba41d713e?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 18
     },
@@ -266,7 +266,7 @@
       "description": "Para el horno o la parrilla a fuego lento. Con ajo y merkén, un clásico chileno.",
       "price": 8990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 2
     },
@@ -277,7 +277,7 @@
       "description": "Parejas y jugosas, listas para la plancha o la parrilla de todos los días.",
       "price": 7990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 3
     },
@@ -310,7 +310,7 @@
       "description": "Fresco del día, listo para el horno de la casa o el pollo asado del domingo.",
       "price": 3990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 1
     },
@@ -332,7 +332,7 @@
       "description": "Jugoso y económico, al horno con papas o a la parrilla marinado.",
       "price": 4490,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 3
     },
@@ -343,7 +343,7 @@
       "description": "El favorito de los niños: al horno, frito o a las brasas.",
       "price": 4990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1624726175512-19b9baf9fbd1?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 4
     },
@@ -354,7 +354,7 @@
       "description": "Para picotear: BBQ, a la parrilla o al horno bien doraditas.",
       "price": 4290,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 5
     },
@@ -365,7 +365,7 @@
       "description": "Fino y elegante, a las brasas o al horno con romero. Para ocasiones especiales.",
       "price": 15990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1514516345957-556ca7d90a29?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 1
     },
@@ -376,7 +376,7 @@
       "description": "Al horno a fuego lento con ajo y vino blanco: se deshace sola.",
       "price": 13990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1612871689353-cccf581d667b?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 2
     },
@@ -398,7 +398,7 @@
       "description": "La auténtica, ahumada y condimentada. Para la parrilla, choripanes o porotos con riendas.",
       "price": 8990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1598401863352-3de5501f4890?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 1
     },
@@ -409,7 +409,7 @@
       "description": "Receta de la casa, con carne seleccionada y aliño tradicional.",
       "price": 7990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1533060328534-2db4d2602877?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 2
     },
@@ -420,7 +420,7 @@
       "description": "El infaltable del choripán: jugoso y con el picor justo.",
       "price": 7490,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1687814776679-8c81b753f870?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 3
     },
@@ -464,7 +464,7 @@
       "description": "De gallina feliz, con yema anaranjada y sabor de verdad.",
       "price": 3490,
       "unit": "docena",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 1
     },
@@ -475,7 +475,7 @@
       "description": "Carbón de espino de larga duración, el compañero obligado del asado.",
       "price": 7990,
       "unit": "un",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 2
     },
@@ -486,7 +486,7 @@
       "description": "Cremoso y de campo, perfecto para el pan amasado o la tabla parrillera.",
       "price": 10990,
       "unit": "kg",
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=800&q=80",
       "available": true,
       "sort": 3
     }
