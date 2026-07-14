@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { formatCLP } from '@/lib/format'
+import { formatPrice } from '@/lib/format'
 import { localizedField } from '@/lib/i18n'
 import { useApp } from '@/contexts/AppContext'
 import ProductImage from './ProductImage'
@@ -96,7 +96,7 @@ export default function ProductModal({ product, emoji, onClose }) {
 
               <div className="mt-5 flex items-center justify-between">
                 <span className="font-playfair text-[26px] font-bold text-forest dark:text-mint">
-                  {formatCLP(product.price)}
+                  {formatPrice(product.price, product.unit)}
                 </span>
                 {product.available === false ? (
                   <span className="rounded-full bg-ink/10 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-wide text-ink/60 dark:bg-paper/10 dark:text-paper/50">
