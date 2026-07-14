@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "name": "Carnicería Mincho",
+    "slogan": "Carnes seleccionadas y atención de barrio en San José de Maipo",
+    "address": "Comercio 19881, San José de Maipo, Región Metropolitana",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Comercio+19881+San+Jos%C3%A9+de+Maipo+Chile",
+    "mapsEmbed": "https://www.google.com/maps?q=Comercio+19881,+San+Jos%C3%A9+de+Maipo,+Chile&output=embed",
+    "hours": "Lunes a domingo · 9:00 a 20:00",
+    "whatsapp": "56900000000",
+    "instagram": "",
+    "instagramHandle": "",
+    "email": ""
+  },
+  "categories": [],
+  "products": []
+}

@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f7f4ee;
+  --ink: #24282a;
+  --mint: #bfe5cb;
+  --forest: #2f6b47;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ocultar scrollbar manteniendo el scroll (barra de categorías) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Recorte de texto con ellipsis */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animación shimmer para skeletons de carga */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #edeae2 25%, #e0dcd1 50%, #edeae2 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, #2a2f30 25%, #343a3b 50%, #2a2f30 75%);
+  background-size: 800px 100%;
+}
+
+/* Respeta las zonas seguras del teléfono (notch / barra inferior) */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Textura sutil de puntos para el hero */
+.hero-texture {
+  background-image: radial-gradient(rgba(47, 107, 71, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.dark .hero-texture {
+  background-image: radial-gradient(rgba(191, 229, 203, 0.06) 1px, transparent 1px);
+}
