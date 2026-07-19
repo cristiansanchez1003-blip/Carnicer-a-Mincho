@@ -4,14 +4,21 @@ import { useApp } from '@/contexts/AppContext'
 
 // Control de tema (oscuro/claro) dentro de la barra sticky, siempre a mano.
 export default function ControlsBar() {
-  const { theme, toggleTheme, t } = useApp()
+  const { theme, toggleTheme, lang, toggleLang, t } = useApp()
 
   return (
     <div className="flex shrink-0 items-center gap-1.5">
       <button
+        onClick={toggleLang}
+        aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+        className="flex h-8 px-2.5 items-center justify-center rounded-full border border-linen bg-card text-ink dark:border-linendark dark:bg-carddark dark:text-mint font-semibold text-xs transition-colors active:scale-95"
+      >
+        {t('langToggle')}
+      </button>
+      <button
         onClick={toggleTheme}
         aria-label={theme === 'light' ? t('themeToggleDark') : t('themeToggleLight')}
-        className="flex h-8 w-8 items-center justify-center rounded-full border border-linen bg-card text-ink dark:border-linendark dark:bg-carddark dark:text-mint"
+        className="flex h-8 w-8 items-center justify-center rounded-full border border-linen bg-card text-ink dark:border-linendark dark:bg-carddark dark:text-mint active:scale-95"
       >
         {theme === 'light' ? (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

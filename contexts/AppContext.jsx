@@ -21,6 +21,10 @@ export function AppProvider({ children }) {
     if (storedTheme === 'light' || storedTheme === 'dark') {
       setThemeState(storedTheme)
     }
+    const storedLang = window.localStorage.getItem(LANG_KEY)
+    if (storedLang === 'es' || storedLang === 'en') {
+      setLangState(storedLang)
+    }
     setReady(true)
   }, [])
 
