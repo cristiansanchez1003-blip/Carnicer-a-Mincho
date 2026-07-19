@@ -1,0 +1,592 @@
+{
+  "settings": {
+    "name": "Carnicería Mincho",
+    "slogan": "Carnes seleccionadas y atención de barrio en San José de Maipo",
+    "address": "Comercio 19881, San José de Maipo, Región Metropolitana",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Comercio+19881+San+Jos%C3%A9+de+Maipo+Chile",
+    "mapsEmbed": "https://www.google.com/maps?q=Comercio+19881,+San+Jos%C3%A9+de+Maipo,+Chile&output=embed",
+    "hours": "Lunes a Sábado · 9:00 a 20:00",
+    "whatsapp": "56974543692",
+    "instagram": "",
+    "instagramHandle": "",
+    "email": ""
+  },
+  "categories": [
+    {
+      "id": "vacuno",
+      "name": "Vacuno",
+      "emoji": "🥩",
+      "sort": 1
+    },
+    {
+      "id": "cerdo",
+      "name": "Cerdo",
+      "emoji": "🐖",
+      "sort": 2
+    },
+    {
+      "id": "pollo-ave",
+      "name": "Pollo y ave",
+      "emoji": "🐔",
+      "sort": 3
+    },
+    {
+      "id": "embutidos",
+      "name": "Subproductos y Embutidos",
+      "emoji": "🌭",
+      "sort": 4
+    }
+  ],
+  "products": [
+    {
+      "id": "filete",
+      "categoryId": "vacuno",
+      "name": "Filete",
+      "description": "El corte más blando del vacuno. Ideal para la plancha, medallones o un lomo a lo pobre de lujo.",
+      "price": 19798,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 1
+    },
+    {
+      "id": "lomo-liso",
+      "categoryId": "vacuno",
+      "name": "Lomo liso",
+      "description": "Magro y parejo, de sabor suave. Excelente a la parrilla o a la plancha en churrascos.",
+      "price": 17798,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 2
+    },
+    {
+      "id": "lomo-vetado",
+      "categoryId": "vacuno",
+      "name": "Lomo vetado",
+      "description": "Infiltrado y jugoso, el rey de la parrilla chilena. Perfecto para asar entero o en bistecs gruesos.",
+      "price": 18798,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 3
+    },
+    {
+      "id": "asiento",
+      "categoryId": "vacuno",
+      "name": "Asiento",
+      "description": "Corte muy blando y con poca grasa, ideal para bistec, churrasco, tataki o asado al horno rápido.",
+      "price": 15798,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 4
+    },
+    {
+      "id": "posta-negra",
+      "categoryId": "vacuno",
+      "name": "Posta negra",
+      "description": "Magra y de fibra corta, la favorita para el pastel de choclo, empanadas y las carnes al jugo.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 5
+    },
+    {
+      "id": "posta-rosada",
+      "categoryId": "vacuno",
+      "name": "Posta rosada",
+      "description": "Magra y versátil. Perfecta para bistecs a la plancha, escalopas o carne mechada.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1588347818036-558601350947?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 6
+    },
+    {
+      "id": "posta-paleta",
+      "categoryId": "vacuno",
+      "name": "Posta paleta",
+      "description": "Corte jugoso y sabroso extraído de la paleta. Ideal para bistecs, guisos o carne mechada.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 7
+    },
+    {
+      "id": "punta-de-ganso",
+      "categoryId": "vacuno",
+      "name": "Punta de ganso",
+      "description": "Clásico de los asados chilenos, con su capa de grasa que lo mantiene jugoso a las brasas.",
+      "price": 15098,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 8
+    },
+    {
+      "id": "pollo-ganso",
+      "categoryId": "vacuno",
+      "name": "Pollo ganso",
+      "description": "Corte magro y de forma cilíndrica regular, excelente para carne mechada, asados o para cortar laminado.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 9
+    },
+    {
+      "id": "posta-molida",
+      "categoryId": "vacuno",
+      "name": "Posta molida",
+      "description": "Posta seleccionada molida en el día, ideal para tártaro, albóndigas o salsas bajas en grasa.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 10
+    },
+    {
+      "id": "churrascos",
+      "categoryId": "vacuno",
+      "name": "Churrascos",
+      "description": "Láminas muy delgadas de vacuno tierno y magro, ideales para el clásico sándwich chileno.",
+      "price": 12998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 11
+    },
+    {
+      "id": "sobrecostilla",
+      "categoryId": "vacuno",
+      "name": "Sobrecostilla",
+      "description": "Clásica de la olla: cazuelas, carbonadas y guisos con mucho sabor.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 12
+    },
+    {
+      "id": "plateada",
+      "categoryId": "vacuno",
+      "name": "Plateadas",
+      "description": "El corte tradicional para cocinar a la olla o al horno por horas, quedando tierno y meloso.",
+      "price": 12098,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 13
+    },
+    {
+      "id": "tapapecho",
+      "categoryId": "vacuno",
+      "name": "Tapapecho",
+      "description": "El brisket chileno: con buena grasa e ideal para ahumados, horno o a la olla bien sazonado.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 14
+    },
+    {
+      "id": "asado-carnicero",
+      "categoryId": "vacuno",
+      "name": "Carnicero",
+      "description": "El secreto del maestro carnicero: sabroso, firme y parrillero por excelencia.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 15
+    },
+    {
+      "id": "abastero",
+      "categoryId": "vacuno",
+      "name": "Abastero",
+      "description": "Gelatinoso y lleno de sabor, ideal para estofados, cazuelas y cocciones largas a la olla.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 16
+    },
+    {
+      "id": "carne-molida",
+      "categoryId": "vacuno",
+      "name": "Carne molida",
+      "description": "Molida del día con cortes seleccionados. Para empanadas, tallarines y hamburguesas caseras.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1612078894671-f11ba41d713e?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 17
+    },
+    {
+      "id": "osobuco",
+      "categoryId": "vacuno",
+      "name": "Osobuco",
+      "description": "Con hueso y tuétano central, ideal para cazuelas y guisos cocinados lentamente.",
+      "price": 9998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 18
+    },
+    {
+      "id": "aletillas",
+      "categoryId": "vacuno",
+      "name": "Aletillas",
+      "description": "Corte sabroso con hueso, perfecto para aportar sabor a cazuelas tradicionales y caldos.",
+      "price": 9998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 19
+    },
+    {
+      "id": "cazuela-coluda",
+      "categoryId": "vacuno",
+      "name": "Cazuela coluda",
+      "description": "Corte de vacuno con hueso de la cola, ideal para preparar una cazuela reponedora y muy sabrosa.",
+      "price": 9998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 20
+    },
+    {
+      "id": "asado-de-tira",
+      "categoryId": "vacuno",
+      "name": "Asado de tira",
+      "description": "Con hueso y bien infiltrado, para la parrilla a fuego lento o una cazuela contundente.",
+      "price": 12798,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 21
+    },
+    {
+      "id": "cochezuela",
+      "categoryId": "vacuno",
+      "name": "Cochezuela",
+      "description": "Corte magro y tierno ideal para bistecs delgados, escalopas o sabrosos guisos de carne.",
+      "price": 12798,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 22
+    },
+    {
+      "id": "puchero",
+      "categoryId": "vacuno",
+      "name": "Puchero",
+      "description": "Hueso con carne seleccionada, ideal para sopas, caldos sustanciosos y cocidos tradicionales.",
+      "price": 9998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 23
+    },
+    {
+      "id": "huesos",
+      "categoryId": "vacuno",
+      "name": "Huesos",
+      "description": "Huesos ideales para caldos, sopas y dar profundidad de sabor a las cazuelas.",
+      "price": 2000,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 24
+    },
+    {
+      "id": "palanca",
+      "categoryId": "vacuno",
+      "name": "Palanca",
+      "description": "Corte delgado y magro, de sabor intenso. Perfecto para una cocción rápida a la parrilla.",
+      "price": 15098,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 25
+    },
+    {
+      "id": "entrana",
+      "categoryId": "vacuno",
+      "name": "Entraña",
+      "description": "Corte parrillero de sabor intenso y textura única. Vuelta y vuelta a fuego fuerte.",
+      "price": 19798,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 26
+    },
+    {
+      "id": "tapabarriga",
+      "categoryId": "vacuno",
+      "name": "Tapabarriga",
+      "description": "Clásico corte parrillero chileno, con su capa de grasa crujiente. Excelente al horno o parrilla.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 27
+    },
+    {
+      "id": "punta-picana",
+      "categoryId": "vacuno",
+      "name": "Punta picana",
+      "description": "Tierna y sabrosa, ideal al horno con papas doradas o a la parrilla en cortes gruesos.",
+      "price": 15098,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 28
+    },
+    {
+      "id": "punta-paleta",
+      "categoryId": "vacuno",
+      "name": "Punta paleta",
+      "description": "Corte de sabor pronunciado y muy tierno (del cual se extrae el flat iron). Ideal para plancha o parrilla.",
+      "price": 15098,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 29
+    },
+    {
+      "id": "pollo-barriga",
+      "categoryId": "vacuno",
+      "name": "Pollo barriga",
+      "description": "Corte sabroso y de cocción rápida a la parrilla, con gran textura y sabor.",
+      "price": 15098,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 30
+    },
+    {
+      "id": "huachalomo",
+      "categoryId": "vacuno",
+      "name": "Huachalomo",
+      "description": "Sabroso y económico, para churrascos, chorrillanas o a las brasas a fuego lento.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 31
+    },
+    {
+      "id": "choclillo",
+      "categoryId": "vacuno",
+      "name": "Choclillo",
+      "description": "Corte alargado, magro y sin grasa. Ideal para carne al jugo, asados o mechada.",
+      "price": 11998,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 32
+    },
+    {
+      "id": "costillar",
+      "categoryId": "cerdo",
+      "name": "Costillar",
+      "description": "Para el horno o la parrilla a fuego lento. Con ajo y merkén, un clásico chileno.",
+      "price": 8898,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 1
+    },
+    {
+      "id": "chuleta-vetada",
+      "categoryId": "cerdo",
+      "name": "Chuleta vetada",
+      "description": "Corte tierno y jugoso gracias a su infiltración de grasa, perfecto para plancha o parrilla.",
+      "price": 6298,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 2
+    },
+    {
+      "id": "chuleta-centro",
+      "categoryId": "cerdo",
+      "name": "Chuleta centro",
+      "description": "Chuletas de cerdo magras y tiernas, ideales para la comida diaria al sartén o plancha.",
+      "price": 6298,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 3
+    },
+    {
+      "id": "pulpa",
+      "categoryId": "cerdo",
+      "name": "Pulpa",
+      "description": "Pulpa de cerdo versátil y rendidora. Excelente para hornear, picar o preparar guisos.",
+      "price": 6498,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 4
+    },
+    {
+      "id": "pernil",
+      "categoryId": "cerdo",
+      "name": "Pernil",
+      "description": "Pernil de cerdo tierno, clásico para cocciones largas al agua o al horno. Muy sabroso.",
+      "price": 3800,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 5
+    },
+    {
+      "id": "manos-cerdo",
+      "categoryId": "cerdo",
+      "name": "Manos de cerdo",
+      "description": "Patitas de cerdo tradicionales, de gran textura y ricas en colágeno, ideales para caldos y guisos.",
+      "price": 3800,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 6
+    },
+    {
+      "id": "cazuela-cerdo",
+      "categoryId": "cerdo",
+      "name": "Cazuela de cerdo",
+      "description": "Trozos seleccionados de cerdo con hueso, ideales para preparar una cazuela bien sabrosa.",
+      "price": 3600,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 7
+    },
+    {
+      "id": "tocino",
+      "categoryId": "cerdo",
+      "name": "Tocino",
+      "description": "Panceta de cerdo ahumada, con el sabor y grasa ideales para acompañar huevos o dar sabor a tus platos.",
+      "price": 2000,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 8
+    },
+    {
+      "id": "trutro-entero",
+      "categoryId": "pollo-ave",
+      "name": "Trutro entero",
+      "description": "Jugoso y económico, al horno con papas o a la parrilla marinado.",
+      "price": 4000,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 1
+    },
+    {
+      "id": "pechuga-entera",
+      "categoryId": "pollo-ave",
+      "name": "Pechuga entera",
+      "description": "Pechuga entera de pollo con hueso, ideal para deshuesar, hornear o desmenuzar.",
+      "price": 5300,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 2
+    },
+    {
+      "id": "trutro-ala",
+      "categoryId": "pollo-ave",
+      "name": "Trutro ala",
+      "description": "Trutro de ala de pollo, sabroso y jugoso, ideal para preparar al horno o fritos tipo picoteo.",
+      "price": 5200,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 3
+    },
+    {
+      "id": "patas-pollo",
+      "categoryId": "pollo-ave",
+      "name": "Patas de pollo",
+      "description": "Patitas de pollo limpias y frescas, excelentes para caldos concentrados llenos de colágeno.",
+      "price": 1500,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 4
+    },
+    {
+      "id": "pana-pollo",
+      "categoryId": "pollo-ave",
+      "name": "Pana",
+      "description": "Panitas de pollo frescas, ideales para preparar un paté casero o saltear con cebolla.",
+      "price": 1500,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 5
+    },
+    {
+      "id": "prieta",
+      "categoryId": "embutidos",
+      "name": "Prieta",
+      "description": "Prietas tradicionales con aliño criollo, ideales para la parrilla o acompañar con papas cocidas.",
+      "price": 3600,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 1
+    },
+    {
+      "id": "guata-callo",
+      "categoryId": "embutidos",
+      "name": "Guata callo",
+      "description": "Guatitas de vacuno (mondongo) limpias y tiernas, ideales para guatitas a la jardinera.",
+      "price": 5100,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 2
+    },
+    {
+      "id": "pata-vacuno",
+      "categoryId": "embutidos",
+      "name": "Pata de vacuno",
+      "description": "Pata de vacuno ideal para cocer a fuego lento, aportando una gran textura colagenosa y sabor.",
+      "price": 5550,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 3
+    },
+    {
+      "id": "chunchules",
+      "categoryId": "embutidos",
+      "name": "Chunchules",
+      "description": "Chunchules de vacuno limpios y trenzados, listos para asar a la parrilla bien crujientes con limón.",
+      "price": 5400,
+      "unit": "kg",
+      "image": "",
+      "available": true,
+      "sort": 4
+    },
+    {
+      "id": "longanizas",
+      "categoryId": "embutidos",
+      "name": "Longanizas",
+      "description": "Longanizas de receta artesanal con condimentos seleccionados. Ideales para parrilladas y choripán.",
+      "price": 7398,
+      "unit": "kg",
+      "image": "https://images.unsplash.com/photo-1533060328534-2db4d2602877?auto=format&fit=crop&w=800&q=80",
+      "available": true,
+      "sort": 5
+    }
+  ]
+}
