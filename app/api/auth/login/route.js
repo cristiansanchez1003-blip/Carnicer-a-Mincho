@@ -24,7 +24,19 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Usuario o contraseña incorrectos' }, { status: 401 })
   }
 
+  let token
+  try {
+    token = createToken(username)
+  } catch (err) {
+    // Producción sin AUTH_SECRET válido: se bloquea el acceso en vez de usar un secreto débil.
+    console.error('No se pudo crear la sesión:', err.message)
+    return NextResponse.json(
+      { error: 'El servidor no está configurado correctamente (AUTH_SECRET). Avisa a quien administra el sitio.' },
+      { status: 500 }
+    )
+  }
+
   const res = NextResponse.json({ ok: true, user: username })
-  res.cookies.set(sessionCookie(createToken(username)))
+  res.cookies.set(sessionCookie(token))
   return res
 }

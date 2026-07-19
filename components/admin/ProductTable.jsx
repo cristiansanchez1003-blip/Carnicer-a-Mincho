@@ -33,7 +33,7 @@ export default function ProductTable({
             <span className="block text-[12.5px] font-semibold text-forest">
               {formatPrice(p.price, p.unit)}
               {p.available === false && (
-                <span className="ml-2 text-[11px] font-bold uppercase text-ink/40">
+                <span className="ml-2 text-[11px] font-bold uppercase text-ink/70">
                   No disponible
                 </span>
               )}
@@ -46,7 +46,7 @@ export default function ProductTable({
                 onClick={() => onMove(p.id, -1)}
                 disabled={idx === 0}
                 aria-label="Subir"
-                className="flex h-5 w-7 items-center justify-center rounded text-ink/40 disabled:opacity-25"
+                className="flex h-5 w-7 items-center justify-center rounded text-ink/60 disabled:opacity-25"
               >
                 ▲
               </button>
@@ -54,7 +54,7 @@ export default function ProductTable({
                 onClick={() => onMove(p.id, 1)}
                 disabled={idx === products.length - 1}
                 aria-label="Bajar"
-                className="flex h-5 w-7 items-center justify-center rounded text-ink/40 disabled:opacity-25"
+                className="flex h-5 w-7 items-center justify-center rounded text-ink/60 disabled:opacity-25"
               >
                 ▼
               </button>

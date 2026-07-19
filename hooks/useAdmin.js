@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { readBody, uploadErrorMessage } from '@/lib/uploadErrors'
 
 // Hook del panel admin: mantiene una copia editable del menú en memoria
 // y la guarda completa mediante PUT /api/admin/menu (commit a GitHub).
@@ -16,9 +17,16 @@ export function useAdmin() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/menu', { cache: 'no-store' })
-      if (!res.ok) throw new Error('No se pudo cargar el menú')
-      const data = await res.json()
+      // Endpoint propio del panel: sin caché y sin copias antiguas de respaldo.
+      const res = await fetch('/api/admin/menu', { cache: 'no-store' })
+      const { data } = await readBody(res)
+      if (!res.ok) {
+        throw new Error(
+          res.status === 401
+            ? 'Tu sesión expiró. Vuelve a ingresar al panel.'
+            : data?.error || 'No se pudo cargar el menú'
+        )
+      }
       setMenu(data)
       savedSnapshot.current = JSON.stringify(data)
       setDirty(false)
@@ -66,9 +74,16 @@ export function useAdmin() {
   const uploadImage = useCallback(async (file) => {
     const form = new FormData()
     form.append('file', file)
-    const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
-    const data = await res.json()
-    if (!res.ok) throw new Error(data.error || 'No se pudo subir la imagen')
+    let res
+    try {
+      res = await fetch('/api/admin/upload', { method: 'POST', body: form })
+    } catch {
+      throw new Error('No se pudo conectar. Revisa tu conexión a internet e inténtalo de nuevo.')
+    }
+    // La respuesta puede no ser JSON (p. ej. el 413 de Vercel llega como texto plano).
+    const { data } = await readBody(res)
+    if (!res.ok) throw new Error(uploadErrorMessage(res.status, data))
+    if (!data?.url) throw new Error('El servidor no devolvió la dirección de la imagen.')
     return data.url
   }, [])
 

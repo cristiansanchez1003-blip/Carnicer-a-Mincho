@@ -38,7 +38,7 @@ export default function ProductCard({ product, emoji, onSelect }) {
             {formatPrice(product.price, product.unit)}
           </span>
           {unavailable && (
-            <span className="rounded-full bg-ink/10 px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-ink/60 dark:bg-paper/10 dark:text-paper/50">
+            <span className="rounded-full bg-ink/10 px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-ink/75 dark:bg-paper/10 dark:text-paper/70">
               {t('unavailable')}
             </span>
           )}

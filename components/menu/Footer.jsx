@@ -122,11 +122,11 @@ export default function Footer({ settings }) {
           </div>
         )}
 
-        <p className="mt-8 text-center text-[11.5px] text-white/35">
+        <p className="mt-8 text-center text-[11.5px] text-white/60">
           © {new Date().getFullYear()} {settings.name || 'Carnicería Mincho'} · San José de Maipo, Chile
         </p>
 
-        <p className="mt-2 text-center text-[11.5px] text-white/35">
+        <p className="mt-2 text-center text-[11.5px] text-white/60">
           {lang === 'en' ? 'This menu was made by' : 'Este menú fue hecho por'}{' '}
           <a
             href="https://www.espiritudigital.cl"

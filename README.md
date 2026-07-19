@@ -69,8 +69,8 @@ En **Vercel → Project → Settings → Environment Variables** agrega:
 | `ADMIN_PASSWORD` | contraseña fuerte para Gloria |
 | `AUTH_SECRET` | texto aleatorio largo (firma las sesiones) |
 | `GITHUB_TOKEN` | token *fine-grained* con permiso **Contents: Read & Write** solo sobre este repo |
-| `GITHUB_REPO` | `cristiansanchez1003-blip/menucarniceriamincho` |
-| `GITHUB_BRANCH` | `main` |
+| `GITHUB_REPO` | `cristiansanchez1003-blip/Carnicer-a-Mincho` |
+| `GITHUB_BRANCH` | `master` |
 | `CLOUDINARY_CLOUD_NAME` | desde el dashboard de Cloudinary |
 | `CLOUDINARY_API_KEY` | desde el dashboard de Cloudinary |
 | `CLOUDINARY_API_SECRET` | desde el dashboard de Cloudinary |

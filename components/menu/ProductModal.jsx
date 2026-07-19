@@ -22,6 +22,16 @@ export default function ProductModal({ product, emoji, onClose }) {
     }
   }, [product])
 
+  // Escape cierra el modal (accesibilidad con teclado)
+  useEffect(() => {
+    if (!product) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [product, onClose])
+
   const name = product ? localizedField(product, 'name', lang) : ''
   const description = product ? localizedField(product, 'description', lang) : ''
 
@@ -99,7 +109,7 @@ export default function ProductModal({ product, emoji, onClose }) {
                   {formatPrice(product.price, product.unit)}
                 </span>
                 {product.available === false ? (
-                  <span className="rounded-full bg-ink/10 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-wide text-ink/60 dark:bg-paper/10 dark:text-paper/50">
+                  <span className="rounded-full bg-ink/10 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-wide text-ink/75 dark:bg-paper/10 dark:text-paper/70">
                     {t('unavailable')}
                   </span>
                 ) : (
