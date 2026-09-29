@@ -548,13 +548,11 @@
       "id": "pana-pollo",
       "categoryId": "pollo-ave",
       "name": "Pana",
-      "name_en": "Chicken Livers (Pana)",
       "description": "Panitas de pollo frescas, ideales para preparar un paté casero o saltear con cebolla.",
-      "description_en": "Fresh chicken livers, perfect for homemade pâté or sautéed with onions.",
       "price": 1500,
       "unit": "kg",
       "image": "",
-      "available": true,
+      "available": false,
       "sort": 5
     },
     {
