@@ -46,7 +46,7 @@ export function AppProvider({ children }) {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }, [theme, setTheme])
 
-  const t = useCallback((key) => translate(lang, key), [lang])
+  const t = useCallback((key, vars) => translate(lang, key, vars), [lang])
 
   const value = useMemo(
     () => ({ lang, setLang, toggleLang, theme, setTheme, toggleTheme, t, ready }),

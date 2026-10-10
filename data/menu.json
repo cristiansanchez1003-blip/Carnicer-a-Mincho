@@ -48,23 +48,27 @@
       "id": "filete",
       "categoryId": "vacuno",
       "name": "Filete",
-      "description": "Carne muy blanda, para asado, bistec,medallones, también se puede cocinar para el horno.",
+      "description": "Carne muy blanda, para asado, bistec, medallones, también se puede cocinar para el horno.",
       "price": 20798,
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 1
+      "sort": 1,
+      "name_en": "Tenderloin (Filete)",
+      "description_en": "Very tender beef for grilling or roasting, steaks and medallions. It can also be cooked in the oven."
     },
     {
       "id": "lomo-liso",
       "categoryId": "vacuno",
       "name": "Lomo liso",
-      "description": "Corte blando con poca cobertura de grasa ideal para prepaciones al sartén, parrilla,horno.",
+      "description": "Corte blando con poca cobertura de grasa ideal para preparaciones al sartén, parrilla, horno.",
       "price": 18798,
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 2
+      "sort": 2,
+      "name_en": "Strip Loin (Lomo Liso)",
+      "description_en": "Tender cut with a thin fat cover, ideal for pan-searing, grilling or roasting."
     },
     {
       "id": "lomo-vetado",
@@ -75,7 +79,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 3
+      "sort": 3,
+      "name_en": "Ribeye (Lomo Vetado)",
+      "description_en": "Marbled and juicy, the king of the Chilean grill. Perfect roasted whole or cut into thick steaks."
     },
     {
       "id": "asiento",
@@ -86,7 +92,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 4
+      "sort": 4,
+      "name_en": "Rump (Asiento)",
+      "description_en": "Very tender, lean cut, ideal for steaks, churrasco, tataki or a quick oven roast."
     },
     {
       "id": "posta-negra",
@@ -97,7 +105,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 5
+      "sort": 5,
+      "name_en": "Posta Negra (Bottom Round)",
+      "description_en": "Lean, short-grain cut, the favorite for pastel de choclo (Chilean corn pie), empanadas and carne al jugo."
     },
     {
       "id": "posta-rosada",
@@ -108,7 +118,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1588347818036-558601350947?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 6
+      "sort": 6,
+      "name_en": "Posta Rosada (Top Round)",
+      "description_en": "Lean and versatile. Perfect for pan-seared steaks, escalopes or shredded beef (carne mechada)."
     },
     {
       "id": "posta-paleta",
@@ -119,7 +131,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 7
+      "sort": 7,
+      "name_en": "Posta Paleta (Shoulder Clod)",
+      "description_en": "Juicy, flavorful cut from the shoulder. Ideal for steaks, stews or shredded beef (carne mechada)."
     },
     {
       "id": "punta-de-ganso",
@@ -130,7 +144,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 8
+      "sort": 8,
+      "name_en": "Punta de Ganso",
+      "description_en": "A classic of Chilean barbecues, its fat cap keeps it juicy over the coals."
     },
     {
       "id": "pollo-ganso",
@@ -141,7 +157,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 9
+      "sort": 9,
+      "name_en": "Eye of Round (Pollo Ganso)",
+      "description_en": "Lean, evenly shaped cylindrical cut, excellent for shredded beef, roasts or thin slicing."
     },
     {
       "id": "posta-molida",
@@ -152,7 +170,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 10
+      "sort": 10,
+      "name_en": "Lean Ground Beef (Posta Molida)",
+      "description_en": "Posta ground fresh daily, ideal for tartare, meatballs or low-fat sauces."
     },
     {
       "id": "churrascos",
@@ -163,7 +183,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 11
+      "sort": 11,
+      "name_en": "Churrascos (Thin-Sliced Top Round)",
+      "description_en": "Very thin slices of tender, lean beef, ideal for the classic Chilean steak sandwich."
     },
     {
       "id": "sobrecostilla",
@@ -174,7 +196,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 12
+      "sort": 12,
+      "name_en": "Sobrecostilla",
+      "description_en": "A classic for the pot: cazuelas (Chilean beef stews), carbonadas and braises full of flavor."
     },
     {
       "id": "plateada",
@@ -185,7 +209,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 13
+      "sort": 13,
+      "name_en": "Plateada",
+      "description_en": "The traditional cut for slow cooking in a pot or oven for hours, turning tender and succulent."
     },
     {
       "id": "tapapecho",
@@ -196,7 +222,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 14
+      "sort": 14,
+      "name_en": "Brisket (Tapapecho)",
+      "description_en": "The Chilean brisket: well marbled and ideal for smoking, roasting or slow-cooking in a well-seasoned pot."
     },
     {
       "id": "asado-carnicero",
@@ -207,7 +235,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 15
+      "sort": 15,
+      "name_en": "Butcher's Cut (Asado Carnicero)",
+      "description_en": "The master butcher's secret: flavorful, firm and a barbecue favorite."
     },
     {
       "id": "abastero",
@@ -218,7 +248,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 16
+      "sort": 16,
+      "name_en": "Abastero",
+      "description_en": "Gelatinous and full of flavor, ideal for stews, cazuelas and long, slow cooking in the pot."
     },
     {
       "id": "carne-molida",
@@ -242,7 +274,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 18
+      "sort": 18,
+      "name_en": "Osso Buco (Osobuco)",
+      "description_en": "Bone-in with central marrow, ideal for cazuelas and slow-cooked stews."
     },
     {
       "id": "aletillas",
@@ -253,7 +287,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 19
+      "sort": 19,
+      "name_en": "Bone-In Beef Ribs (Aletillas)",
+      "description_en": "Flavorful bone-in cut, perfect for adding richness to traditional cazuelas and broths."
     },
     {
       "id": "cazuela-coluda",
@@ -264,7 +300,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 20
+      "sort": 20,
+      "name_en": "Oxtail (Cazuela Coluda)",
+      "description_en": "Beef cut with bone from the tail, ideal for a restorative and very flavorful cazuela."
     },
     {
       "id": "asado-de-tira",
@@ -275,7 +313,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 21
+      "sort": 21,
+      "name_en": "Short Ribs (Asado de Tira)",
+      "description_en": "Bone-in and well marbled, for the grill over low heat or a hearty cazuela."
     },
     {
       "id": "cochezuela",
@@ -286,7 +326,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 22
+      "sort": 22,
+      "name_en": "Cochezuela",
+      "description_en": "Lean and tender cut, ideal for thin steaks, escalopes or flavorful beef stews."
     },
     {
       "id": "puchero",
@@ -297,7 +339,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 23
+      "sort": 23,
+      "name_en": "Beef Stew Cut (Cazuela de Puchero)",
+      "description_en": "Selected beef for stew, ideal for soups, hearty broths and traditional boiled dinners."
     },
     {
       "id": "huesos",
@@ -308,7 +352,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 24
+      "sort": 24,
+      "name_en": "Beef Bones (Huesos)",
+      "description_en": "Bones ideal for broths and soups, adding depth of flavor to cazuelas."
     },
     {
       "id": "palanca",
@@ -319,7 +365,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 25
+      "sort": 25,
+      "name_en": "Palanca",
+      "description_en": "Thin, lean cut with intense flavor. Perfect for quick cooking on the grill."
     },
     {
       "id": "entrana",
@@ -330,7 +378,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 26
+      "sort": 26,
+      "name_en": "Skirt Steak (Entraña)",
+      "description_en": "A grill favorite with intense flavor and a unique texture. Sear quickly on both sides over high heat."
     },
     {
       "id": "tapabarriga",
@@ -341,7 +391,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 27
+      "sort": 27,
+      "name_en": "Tapabarriga",
+      "description_en": "A classic Chilean grilling cut with a crispy fat cap. Excellent roasted or grilled."
     },
     {
       "id": "punta-picana",
@@ -352,7 +404,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 28
+      "sort": 28,
+      "name_en": "Picanha (Punta Picana)",
+      "description_en": "Tender and flavorful, ideal roasted with golden potatoes or grilled in thick cuts."
     },
     {
       "id": "punta-paleta",
@@ -363,7 +417,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 29
+      "sort": 29,
+      "name_en": "Shoulder Tip (Punta Paleta)",
+      "description_en": "Very tender cut with a pronounced flavor (the flat iron comes from it). Ideal for the griddle or grill."
     },
     {
       "id": "pollo-barriga",
@@ -374,7 +430,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 30
+      "sort": 30,
+      "name_en": "Pollo Barriga",
+      "description_en": "Flavorful cut that cooks quickly on the grill, with great texture and taste."
     },
     {
       "id": "huachalomo",
@@ -385,7 +443,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 31
+      "sort": 31,
+      "name_en": "Chuck (Huachalomo)",
+      "description_en": "Flavorful and affordable, for churrascos, chorrillanas or slow cooking over the coals."
     },
     {
       "id": "choclillo",
@@ -396,7 +456,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 32
+      "sort": 32,
+      "name_en": "Choclillo",
+      "description_en": "Long, lean cut with no fat. Ideal for beef in its juices, roasts or shredded beef (carne mechada)."
     },
     {
       "id": "costillar",
@@ -407,7 +469,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 1
+      "sort": 1,
+      "name_en": "Pork Ribs (Costillar)",
+      "description_en": "For the oven or slow grilling. With garlic and merkén (Chilean smoked chili), a Chilean classic."
     },
     {
       "id": "chuleta-vetada",
@@ -470,7 +534,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 6
+      "sort": 6,
+      "name_en": "Pork Trotters (Manos de Cerdo)",
+      "description_en": "Traditional pig's feet with great texture and rich in collagen, ideal for broths and stews."
     },
     {
       "id": "cazuela-cerdo",
@@ -507,7 +573,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 1
+      "sort": 1,
+      "name_en": "Whole Chicken Leg (Trutro Entero)",
+      "description_en": "Juicy and affordable, roasted with potatoes or marinated on the grill."
     },
     {
       "id": "pechuga-entera",
@@ -518,7 +586,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 2
+      "sort": 2,
+      "name_en": "Whole Chicken Breast (Pechuga Entera)",
+      "description_en": "Whole bone-in chicken breast, ideal for deboning, roasting or shredding."
     },
     {
       "id": "trutro-ala",
@@ -529,7 +599,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 3
+      "sort": 3,
+      "name_en": "Chicken Wing Drumettes (Trutro Ala)",
+      "description_en": "Tasty, juicy chicken wing drumettes, ideal roasted or fried as a snack."
     },
     {
       "id": "patas-pollo",
@@ -553,7 +625,9 @@
       "unit": "kg",
       "image": "",
       "available": false,
-      "sort": 5
+      "sort": 5,
+      "name_en": "Chicken Livers (Pana)",
+      "description_en": "Fresh chicken livers, ideal for homemade pâté or sautéed with onions."
     },
     {
       "id": "prieta",
@@ -564,7 +638,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 1
+      "sort": 1,
+      "name_en": "Blood Sausage (Prieta)",
+      "description_en": "Traditional blood sausages with Chilean-style seasoning, ideal for the grill or served with boiled potatoes."
     },
     {
       "id": "guata-callo",
@@ -575,7 +651,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 2
+      "sort": 2,
+      "name_en": "Beef Tripe (Guata Callo)",
+      "description_en": "Clean, tender beef tripe (mondongo), ideal for guatitas a la jardinera, a Chilean tripe stew with vegetables."
     },
     {
       "id": "pata-vacuno",
@@ -599,7 +677,9 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 4
+      "sort": 4,
+      "name_en": "Braided Beef Intestines (Chunchules)",
+      "description_en": "Clean, braided beef chunchules, ready to grill until crispy and served with lemon."
     },
     {
       "id": "longanizas",
@@ -610,7 +690,9 @@
       "unit": "kg",
       "image": "https://images.unsplash.com/photo-1533060328534-2db4d2602877?auto=format&fit=crop&w=800&q=80",
       "available": true,
-      "sort": 5
+      "sort": 5,
+      "name_en": "Longaniza Sausages (Longanizas)",
+      "description_en": "Artisan-recipe longanizas with selected seasonings. Ideal for barbecues and choripán."
     },
     {
       "id": "n1791047528242",
@@ -621,7 +703,8 @@
       "unit": "kg",
       "image": "",
       "available": true,
-      "sort": 6
+      "sort": 6,
+      "name_en": "Beef Liver (Pana de Vacuno)"
     }
   ]
 }

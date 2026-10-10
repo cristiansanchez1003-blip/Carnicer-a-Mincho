@@ -35,7 +35,7 @@ export default function ProductCard({ product, emoji, onSelect }) {
         )}
         <div className="mt-1.5 flex items-center gap-2">
           <span className="font-playfair text-[15.5px] font-bold text-forest dark:text-mint">
-            {formatPrice(product.price, product.unit)}
+            {formatPrice(product.price, product.unit, lang)}
           </span>
           {unavailable && (
             <span className="rounded-full bg-ink/10 px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-ink/75 dark:bg-paper/10 dark:text-paper/70">

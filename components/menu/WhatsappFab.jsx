@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useApp } from '@/contexts/AppContext'
 
 // Botón flotante de WhatsApp, siempre a un toque de distancia.
 export default function WhatsappFab({ phone }) {
+  const { t } = useApp()
   if (!phone) return null
 
   return (
@@ -11,7 +13,7 @@ export default function WhatsappFab({ phone }) {
       href={`https://api.whatsapp.com/send?phone=${phone}`}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escríbenos por WhatsApp"
+      aria-label={t('whatsappFab')}
       className="fixed bottom-5 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-cardHover"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}

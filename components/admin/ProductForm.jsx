@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { compressImage } from '@/lib/imageCompress'
+import { buildProductForm, normalizeProductForm } from '@/lib/productForm'
 
 // Formulario de crear/editar producto en modal bottom-sheet.
 // La imagen se puede subir a Cloudinary o pegar una URL directa.
@@ -16,17 +17,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
 
   useEffect(() => {
     if (product) {
-      setForm({
-        id: product.id || `n${Date.now()}`,
-        categoryId: product.categoryId || categories[0]?.id || '',
-        name: product.name || '',
-        description: product.description || '',
-        price: product.price ?? '',
-        unit: product.unit || 'kg',
-        image: product.image || '',
-        available: product.available !== false,
-        sort: product.sort || 0,
-      })
+      setForm(buildProductForm(product, categories))
       setUploadError(null)
     } else {
       setForm(null)
@@ -65,7 +56,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSave({ ...form, price: Math.round(Number(form.price) || 0) })
+    onSave(normalizeProductForm(form))
     onClose()
   }
 
@@ -186,6 +177,43 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                   className={inputCls}
                 />
               </label>
+
+              <details
+                className="rounded-xl border border-linen bg-paper px-3.5 py-2.5"
+                open={Boolean(form.name_en || form.description_en)}
+              >
+                <summary className="cursor-pointer text-[13px] font-bold text-ink/80">
+                  🇬🇧 Inglés (para turistas){' '}
+                  {!form.name_en && (
+                    <span className="font-normal text-amber-700">· falta la traducción</span>
+                  )}
+                </summary>
+                <div className="mt-3 flex flex-col gap-3">
+                  <label className="block">
+                    <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
+                      Nombre en inglés
+                    </span>
+                    <input
+                      type="text"
+                      value={form.name_en}
+                      onChange={(e) => set('name_en', e.target.value)}
+                      placeholder="Ej: Ribeye (Lomo Vetado)"
+                      className={inputCls}
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
+                      Descripción en inglés
+                    </span>
+                    <textarea
+                      rows={2}
+                      value={form.description_en}
+                      onChange={(e) => set('description_en', e.target.value)}
+                      className={inputCls}
+                    />
+                  </label>
+                </div>
+              </details>
 
               <div className="grid grid-cols-2 gap-3">
                 <label className="block">

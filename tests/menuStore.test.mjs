@@ -194,3 +194,22 @@ test('sin GITHUB_REPO ni GITHUB_BRANCH usa el repositorio del proyecto y la rama
     }
   }
 })
+
+// ---------- textos en inglés ----------
+
+test('rechaza textos en inglés desmesurados', () => {
+  const a = base()
+  a.products[0].name_en = 'x'.repeat(200)
+  assert.match(validateMenu(a), /inglés/i)
+  const b = base()
+  b.products[0].description_en = 'x'.repeat(1200)
+  assert.match(validateMenu(b), /inglés/i)
+})
+
+test('acepta textos en inglés normales y categorías con nombre en inglés', () => {
+  const m = base()
+  m.products[0].name_en = 'Ribeye (Lomo Vetado)'
+  m.products[0].description_en = 'Juicy and marbled.'
+  m.categories[0].name_en = 'Beef'
+  assert.equal(validateMenu(m), null)
+})

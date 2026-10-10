@@ -76,7 +76,7 @@ export default function ProductModal({ product, emoji, onClose }) {
             {/* Botón cerrar */}
             <button
               onClick={onClose}
-              aria-label="Cerrar"
+              aria-label={t('close')}
               className="absolute right-3.5 top-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-ink/55 text-white backdrop-blur transition-transform active:scale-90"
             >
               <svg className="h-4.5 w-4.5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -106,7 +106,7 @@ export default function ProductModal({ product, emoji, onClose }) {
 
               <div className="mt-5 flex items-center justify-between">
                 <span className="font-playfair text-[26px] font-bold text-forest dark:text-mint">
-                  {formatPrice(product.price, product.unit)}
+                  {formatPrice(product.price, product.unit, lang)}
                 </span>
                 {product.available === false ? (
                   <span className="rounded-full bg-ink/10 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-wide text-ink/75 dark:bg-paper/10 dark:text-paper/70">

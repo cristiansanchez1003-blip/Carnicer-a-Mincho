@@ -11,7 +11,7 @@ import ControlsBar from './ControlsBar'
 export default function CategoryNav({ categories, activeId, onSelect }) {
   const barRef = useRef(null)
   const pillRefs = useRef({})
-  const { lang } = useApp()
+  const { lang, t } = useApp()
 
   useEffect(() => {
     const pill = pillRefs.current[activeId]
@@ -29,7 +29,7 @@ export default function CategoryNav({ categories, activeId, onSelect }) {
           ref={barRef}
           className="no-scrollbar flex min-w-0 flex-1 gap-2 overflow-x-auto"
           role="tablist"
-          aria-label="Categorías del menú"
+          aria-label={t('categoriesAria')}
         >
           {categories.map((cat) => {
             const active = cat.id === activeId

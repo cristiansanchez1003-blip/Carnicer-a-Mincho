@@ -103,7 +103,7 @@ export default function Footer({ settings }) {
           <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
             <iframe
               src={settings.mapsEmbed}
-              title="Mapa Carnicería Mincho"
+              title={t('mapTitle')}
               className="h-56 w-full"
               style={{ border: 0 }}
               loading="lazy"

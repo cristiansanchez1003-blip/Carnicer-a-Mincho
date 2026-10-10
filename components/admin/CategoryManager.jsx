@@ -91,6 +91,14 @@ export default function CategoryManager({ categories, products, onSave, onDelete
                 className={`${inputCls} min-w-0 flex-1 border-transparent bg-transparent font-bold`}
                 aria-label="Nombre de categoría"
               />
+              <input
+                type="text"
+                value={cat.name_en || ''}
+                onChange={(e) => onSave({ ...cat, name_en: e.target.value })}
+                placeholder="English"
+                className={`${inputCls} w-24 shrink-0 border-transparent bg-transparent text-[13px] sm:w-32`}
+                aria-label={`Nombre en inglés de ${cat.name}`}
+              />
               <span className="shrink-0 rounded-full bg-ink/5 px-2 py-1 text-[11px] font-bold text-muted">
                 {count}
               </span>
