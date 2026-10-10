@@ -17,7 +17,7 @@ module.exports = {
         paper: '#F5EFE4',
         card: '#FFFCF5',
         ink: '#231F1C',
-        muted: '#7A716B',
+        muted: '#6B625C',
         mint: '#FFC93C',
         mintsoft: '#FBEED3',
         forest: '#B3271D',

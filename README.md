@@ -2,7 +2,7 @@
 
 Menú digital para **Carnicería Mincho** (Comercio 19881, San José de Maipo, Región Metropolitana, Chile). Los clientes escanean un QR y ven el catálogo en su celular; Gloria administra productos, precios, fotos y datos del local desde un panel privado con usuario y contraseña.
 
-Construido con **Next.js 14 (App Router)**, **Tailwind CSS**, **Framer Motion** y **qrcode.react**, sobre la misma arquitectura probada de El Café de Pirque. **Sin base de datos pagada**: el catálogo vive en `data/menu.json` dentro de este repositorio y el panel admin lo edita mediante la **API de GitHub** (gratis, con historial de cambios). Las fotos se suben a **Cloudinary** (plan gratuito).
+Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Framer Motion** y **qrcode.react**, sobre la misma arquitectura probada de El Café de Pirque. **Sin base de datos pagada**: el catálogo vive en `data/menu.json` dentro de este repositorio y el panel admin lo edita mediante la **API de GitHub** (gratis, con historial de cambios). Las fotos se suben a **Cloudinary** (plan gratuito).
 
 ---
 
@@ -57,6 +57,22 @@ npm run dev
 - Menú: [http://localhost:3000/menu](http://localhost:3000/menu)
 - Admin: [http://localhost:3000/admin](http://localhost:3000/admin)
 
+> `npm run dev` usa el modo webpack (`next dev --webpack`): con Turbopack, el modo de
+> desarrollo de Next 16 no logra cargar la fuente de Google (Playfair Display) en este
+> proyecto. La compilación de producción (`npm run build`) sí usa Turbopack y funciona.
+
+### Comprobaciones
+
+```bash
+npm test        # pruebas automáticas (lib/): autenticación, Cloudinary, GitHub, validación del menú
+npm run lint    # ESLint
+npm run build   # compilación de producción
+```
+
+En el panel, **Ajustes → Estado de las conexiones → Probar conexiones** verifica con las
+credenciales reales del servidor que se pueden subir fotos y guardar cambios, y avisa
+cuándo vence el token de GitHub.
+
 ---
 
 ## ☁️ Configuración en Vercel (producción)
@@ -69,8 +85,8 @@ En **Vercel → Project → Settings → Environment Variables** agrega:
 | `ADMIN_PASSWORD` | contraseña fuerte para Gloria |
 | `AUTH_SECRET` | texto aleatorio largo (firma las sesiones) |
 | `GITHUB_TOKEN` | token *fine-grained* con permiso **Contents: Read & Write** solo sobre este repo |
-| `GITHUB_REPO` | `cristiansanchez1003-blip/menucarniceriamincho` |
-| `GITHUB_BRANCH` | `main` |
+| `GITHUB_REPO` | `cristiansanchez1003-blip/Carnicer-a-Mincho` |
+| `GITHUB_BRANCH` | `main` (opcional: es el valor por defecto) |
 | `CLOUDINARY_CLOUD_NAME` | desde el dashboard de Cloudinary |
 | `CLOUDINARY_API_KEY` | desde el dashboard de Cloudinary |
 | `CLOUDINARY_API_SECRET` | desde el dashboard de Cloudinary |

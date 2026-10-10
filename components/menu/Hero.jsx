@@ -21,6 +21,7 @@ export default function Hero({ settings }) {
       <div className="pointer-events-none absolute -left-20 top-32 h-48 w-48 rounded-full bg-forest/15 blur-3xl dark:bg-mint/10" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto max-w-lg px-6">
+        <h1 className="sr-only">{settings?.name || 'Carnicería Mincho'} — Menú</h1>
         <motion.img
           key={theme}
           src={theme === 'dark' ? '/logo-dark.jpeg' : '/logo-light.jpeg'}

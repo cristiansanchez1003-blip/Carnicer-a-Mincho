@@ -9,6 +9,7 @@ import ProductTable from '@/components/admin/ProductTable'
 import SettingsForm from '@/components/admin/SettingsForm'
 import CategoryManager from '@/components/admin/CategoryManager'
 import QRSection from '@/components/admin/QRSection'
+import ConnectionStatus from '@/components/admin/ConnectionStatus'
 
 const TABS = [
   { id: 'productos', label: 'Productos', emoji: '🍽️' },
@@ -91,7 +92,9 @@ export default function DashboardPage() {
   if (error || !menu) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-paper px-6 text-center">
-        <p className="text-muted">No se pudo cargar el menú. Recarga la página.</p>
+        <p className="max-w-sm text-muted">
+          {error || 'No se pudo cargar el menú.'} Recarga la página para reintentar.
+        </p>
       </div>
     )
   }
@@ -113,7 +116,7 @@ export default function DashboardPage() {
               className={`flex-1 rounded-xl px-3 py-2.5 text-[13px] font-bold transition active:scale-95 ${
                 tab === t.id
                   ? 'bg-ink text-mint shadow-nav'
-                  : 'border border-linen bg-card text-ink/60'
+                  : 'border border-linen bg-card text-ink/70'
               }`}
             >
               <span className="mr-1">{t.emoji}</span>
@@ -147,7 +150,7 @@ export default function DashboardPage() {
                 className={`shrink-0 rounded-full px-3.5 py-1.5 text-[12.5px] font-bold ${
                   filterCat === 'all'
                     ? 'bg-ink text-mint'
-                    : 'border border-linen bg-card text-ink/60'
+                    : 'border border-linen bg-card text-ink/70'
                 }`}
               >
                 Todas
@@ -159,7 +162,7 @@ export default function DashboardPage() {
                   className={`shrink-0 rounded-full px-3.5 py-1.5 text-[12.5px] font-bold ${
                     filterCat === c.id
                       ? 'bg-ink text-mint'
-                      : 'border border-linen bg-card text-ink/60'
+                      : 'border border-linen bg-card text-ink/70'
                   }`}
                 >
                   {c.emoji} {c.name}
@@ -196,6 +199,7 @@ export default function DashboardPage() {
 
         {tab === 'ajustes' && (
           <div className="mt-5 flex flex-col gap-5">
+            <ConnectionStatus />
             <SettingsForm settings={menu.settings} onSave={saveSettings} />
             <CategoryManager
               categories={categories}

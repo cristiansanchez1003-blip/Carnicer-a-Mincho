@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { compressImage } from '@/lib/imageCompress'
 
 // Formulario de crear/editar producto en modal bottom-sheet.
 // La imagen se puede subir a Cloudinary o pegar una URL directa.
@@ -9,6 +10,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
   const isNew = !product?.id
   const [form, setForm] = useState(null)
   const [uploading, setUploading] = useState(false)
+  const [uploadStage, setUploadStage] = useState('Subiendo…')
   const [uploadError, setUploadError] = useState(null)
   const fileRef = useRef(null)
 
@@ -48,7 +50,10 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
     setUploading(true)
     setUploadError(null)
     try {
-      const url = await uploadImage(file)
+      setUploadStage('Optimizando…')
+      const prepared = await compressImage(file)
+      setUploadStage('Subiendo…')
+      const url = await uploadImage(prepared)
       set('image', url)
     } catch (err) {
       setUploadError(err.message)
@@ -94,7 +99,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                 type="button"
                 onClick={onClose}
                 aria-label="Cerrar"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-ink/5 text-ink/60"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-ink/5 text-ink/70"
               >
                 ✕
               </button>
@@ -124,20 +129,26 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                       htmlFor="product-image-file"
                       className="cursor-pointer rounded-full bg-ink px-3.5 py-2 text-[12.5px] font-bold text-mint active:scale-95"
                     >
-                      {uploading ? 'Subiendo…' : 'Subir foto'}
+                      {uploading ? uploadStage : 'Subir foto'}
                     </label>
                     {form.image && (
                       <button
                         type="button"
                         onClick={() => set('image', '')}
-                        className="rounded-full border border-linen px-3.5 py-2 text-[12.5px] font-bold text-ink/60"
+                        className="rounded-full border border-linen px-3.5 py-2 text-[12.5px] font-bold text-ink/70"
                       >
                         Quitar
                       </button>
                     )}
                   </div>
                   {uploadError && (
-                    <p className="mt-1.5 text-[12px] font-semibold text-red-600">{uploadError}</p>
+                    <p role="alert" className="mt-1.5 text-[12px] font-semibold text-red-600">
+                      {uploadError}
+                      <span className="mt-0.5 block font-normal text-ink/70">
+                        También puedes pegar la dirección (URL) de la imagen abajo. Para revisar
+                        la conexión con Cloudinary: Ajustes → Estado de las conexiones.
+                      </span>
+                    </p>
                   )}
                 </div>
               </div>
