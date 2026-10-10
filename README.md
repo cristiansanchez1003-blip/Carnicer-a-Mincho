@@ -17,7 +17,7 @@ Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Frame
 - **Modo oscuro por defecto** — el letrero Mincho sobre negro; el cliente puede cambiar a modo claro (fondo crema madera) y su elección queda guardada en el navegador. El logotipo cambia según el tema.
 - **Panel admin** (`/admin`) — login con usuario y contraseña (cookie httpOnly firmada con HMAC).
   - Productos: crear, editar, eliminar, reordenar, disponibilidad, búsqueda, filtro por categoría y **unidad de venta** (kilo / unidad / docena).
-  - Imágenes: subir la foto desde el celular (se reduce sola antes de subir y queda guardada en el repositorio) o pegar una URL.
+  - Imágenes: subir la foto desde el celular (se reduce sola antes de subir y queda guardada en el repositorio). No hay que pegar ninguna dirección.
   - Categorías: crear, renombrar, cambiar emoji, eliminar.
   - Ajustes del local: horario, dirección, mapa embebido, WhatsApp, Instagram (opcional), correo (opcional), eslogan.
   - Código QR descargable en PNG.

@@ -6,19 +6,21 @@ import { compressImage } from '@/lib/imageCompress'
 import { buildProductForm, normalizeProductForm } from '@/lib/productForm'
 
 // Formulario de crear/editar producto en modal bottom-sheet.
-// La imagen se puede subir desde el celular o pegar una URL directa.
+// La imagen se sube desde el celular (no se pega ninguna dirección).
 export default function ProductForm({ product, categories, onSave, onClose, uploadImage }) {
   const isNew = !product?.id
   const [form, setForm] = useState(null)
   const [uploading, setUploading] = useState(false)
   const [uploadStage, setUploadStage] = useState('Subiendo…')
   const [uploadError, setUploadError] = useState(null)
+  const [uploaded, setUploaded] = useState(false)
   const fileRef = useRef(null)
 
   useEffect(() => {
     if (product) {
       setForm(buildProductForm(product, categories))
       setUploadError(null)
+      setUploaded(false)
     } else {
       setForm(null)
     }
@@ -40,12 +42,14 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
     if (!file) return
     setUploading(true)
     setUploadError(null)
+    setUploaded(false)
     try {
       setUploadStage('Optimizando…')
       const prepared = await compressImage(file)
       setUploadStage('Subiendo…')
       const url = await uploadImage(prepared)
       set('image', url)
+      setUploaded(true)
     } catch (err) {
       setUploadError(err.message)
     } finally {
@@ -120,7 +124,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                       htmlFor="product-image-file"
                       className="cursor-pointer rounded-full bg-ink px-3.5 py-2 text-[12.5px] font-bold text-mint active:scale-95"
                     >
-                      {uploading ? uploadStage : 'Subir foto'}
+                      {uploading ? uploadStage : form.image ? 'Cambiar foto' : 'Subir foto'}
                     </label>
                     {form.image && (
                       <button
@@ -132,37 +136,21 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                       </button>
                     )}
                   </div>
+                  {uploaded && !uploadError && (
+                    <p role="status" className="mt-1.5 text-[12px] font-semibold text-forest">
+                      ✓ Foto lista. Presiona “Guardar producto” para usarla.
+                    </p>
+                  )}
                   {uploadError && (
                     <p role="alert" className="mt-1.5 text-[12px] font-semibold text-red-600">
                       {uploadError}
                       <span className="mt-0.5 block font-normal text-ink/70">
-                        También puedes pegar la dirección (URL) de la imagen abajo. Para revisar
-                        la conexión: Ajustes → Estado de las conexiones.
+                        Si sigue fallando, revisa la conexión: Ajustes → Estado de las conexiones.
                       </span>
                     </p>
                   )}
                 </div>
               </div>
-
-              <label className="block">
-                <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
-                  URL de imagen (opcional)
-                </span>
-                {/* type="text": una foto subida desde el panel queda como ruta del sitio
-                    (/api/img/…), que un campo type="url" rechazaría como inválida. */}
-                <input
-                  type="text"
-                  inputMode="url"
-                  autoCapitalize="none"
-                  spellCheck={false}
-                  pattern="https://\S+|/[^/\s]\S*"
-                  title="Una dirección que empiece con https:// (o la ruta de una foto ya subida)"
-                  value={form.image}
-                  onChange={(e) => set('image', e.target.value)}
-                  placeholder="https://…"
-                  className={inputCls}
-                />
-              </label>
 
               <label className="block">
                 <span className="mb-1 block text-[12.5px] font-bold text-ink/70">Nombre *</span>
