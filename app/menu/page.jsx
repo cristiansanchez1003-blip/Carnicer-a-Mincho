@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useMenu } from '@/hooks/useMenu'
 import { AppProvider, useApp } from '@/contexts/AppContext'
+import { OrderProvider, useOrder } from '@/contexts/OrderContext'
 import { localizedField } from '@/lib/i18n'
 import Hero from '@/components/menu/Hero'
 import CategoryNav from '@/components/menu/CategoryNav'
@@ -11,6 +12,9 @@ import ProductCard from '@/components/menu/ProductCard'
 import ProductModal from '@/components/menu/ProductModal'
 import Footer from '@/components/menu/Footer'
 import WhatsappFab from '@/components/menu/WhatsappFab'
+import OrderBar from '@/components/menu/OrderBar'
+import OrderDrawer from '@/components/menu/OrderDrawer'
+import AsadoCalculator from '@/components/menu/AsadoCalculator'
 
 function SkeletonMenu() {
   return (
@@ -35,6 +39,7 @@ function SkeletonMenu() {
 function MenuContent() {
   const { settings, categories, products, loading, error } = useMenu()
   const { theme, lang, t } = useApp()
+  const { count: orderCount } = useOrder()
   const [activeId, setActiveId] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -68,8 +73,14 @@ function MenuContent() {
 
   return (
     <div className={theme === 'dark' ? 'dark' : ''}>
-      <main className="mx-auto min-h-screen max-w-2xl bg-paper text-ink transition-colors duration-300 dark:bg-paperdark dark:text-paper">
+      <main
+        className={`mx-auto min-h-screen max-w-2xl bg-paper text-ink transition-colors duration-300 dark:bg-paperdark dark:text-paper ${
+          orderCount > 0 ? 'pb-24' : ''
+        }`}
+      >
         <Hero settings={settings} />
+
+        {!loading && !error && <AsadoCalculator products={products} />}
 
         {!loading && visibleCategories.length > 0 && (
           <CategoryNav categories={visibleCategories} activeId={activeId} onSelect={setActiveId} />
@@ -128,8 +139,11 @@ function MenuContent() {
 
         <ProductModal product={selected} emoji={selectedEmoji} onClose={() => setSelected(null)} />
 
+        <OrderDrawer products={products} settings={settings} />
+        <OrderBar products={products} />
+
         <Footer settings={settings} />
-        <WhatsappFab phone={settings?.whatsapp} />
+        <WhatsappFab phone={settings?.whatsapp} hidden={orderCount > 0} />
       </main>
     </div>
   )
@@ -138,7 +152,9 @@ function MenuContent() {
 export default function MenuPage() {
   return (
     <AppProvider>
-      <MenuContent />
+      <OrderProvider>
+        <MenuContent />
+      </OrderProvider>
     </AppProvider>
   )
 }

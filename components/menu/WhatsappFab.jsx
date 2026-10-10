@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 import { useApp } from '@/contexts/AppContext'
 
 // Botón flotante de WhatsApp, siempre a un toque de distancia.
-export default function WhatsappFab({ phone }) {
+export default function WhatsappFab({ phone, hidden = false }) {
   const { t } = useApp()
-  if (!phone) return null
+  if (!phone || hidden) return null
 
   return (
     <motion.a

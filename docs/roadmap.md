@@ -21,6 +21,18 @@
 errores claros, botón "Probar conexiones", guardado seguro, validación del menú, cabeceras de
 seguridad, 72 pruebas automáticas, migración a Next 16 / React 19 (0 vulnerabilidades en producción).
 
+### Hecho el 2026-10-10
+
+| Idea | Estado |
+|---|---|
+| C1 Pedido por WhatsApp con kilos | ✅ Hecho |
+| C2 + P3 "Abierto ahora" y horario por día (con editor en el panel) | ✅ Hecho |
+| C6 Calculadora de asado | ✅ Hecho (los gramos por persona y los cortes sugeridos son una referencia: validar con Nicolás) |
+| C8 Inglés completo (51 productos, categorías, eslogan, horario) | ✅ Hecho, con campos de inglés en el panel |
+| P1 Ajuste masivo de precios con vista previa | ✅ Hecho |
+| P2 "Precios actualizados el…" | ✅ Hecho (se actualiza solo al cambiar un precio) |
+| D5 (parcial) cierre con Escape, contraste corregido, ícono de la pestaña | ✅ Hecho |
+
 ## 2. Las 5 ideas que más valor dan (en este orden)
 
 1. **Fotos reales de los productos.** Hoy el 71 % no tiene foto y las que hay son de stock (pueden
@@ -122,16 +134,16 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
 - [ ] **1.1** Jornada de fotos (C: Nicolás): guía de 1 página (luz natural, fondo oscuro o madera,
       tabla limpia, 1 foto cenital por corte). Meta: las 36 que faltan, empezando por las 10
       más vendidas. → resuelve D1 parcialmente.
-- [ ] **1.2** Inglés completo (C8): se prepara una propuesta de traducción de los 42 productos que
+- [x] **1.2** Inglés completo (C8) — hecho: se prepara una propuesta de traducción de los 42 productos que
       faltan, Nicolás la revisa en una pasada.
-- [ ] **1.3** P2 "Precios actualizados el…", C9 botón Llamar y reseñas, C3 aviso de portada.
+- [ ] **1.3** ~~P2 "Precios actualizados el…"~~ (hecho), C9 botón Llamar y reseñas, C3 aviso de portada.
 - [ ] **1.4** D1 placeholder con marca + P10 mini-guía de ayuda en el panel.
 
 *Cierre:* ≥ 80 % de productos con foto real, 100 % en inglés, aviso y fecha visibles.
 
 ### Etapa 2 — Convertir visitas en pedidos (1–2 semanas)
-- [ ] **2.1** C2 + P3: horario por día y "Abierto ahora".
-- [ ] **2.2** C1 + D4: pedido por WhatsApp con kilos (pasos de 0,5 kg, nota por producto, total
+- [x] **2.1** C2 + P3: horario por día y "Abierto ahora" — hecho
+- [x] **2.2** (hecho) C1 + D4: pedido por WhatsApp con kilos (pasos de 0,5 kg, nota por producto, total
       estimado, mensaje listo para enviar). *Hecho cuando* un pedido de prueba llega a WhatsApp con
       el formato correcto y los totales cuadran.
 - [ ] **2.3** C4 productos destacados y C5 buscador.
@@ -140,13 +152,13 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
 *Cierre:* pedido de prueba completo desde un celular; Nicolás lo usa una semana y da feedback.
 
 ### Etapa 3 — Herramientas para el día a día (1 semana)
-- [ ] **3.1** P1 ajuste masivo de precios con vista previa.
+- [x] **3.1** P1 ajuste masivo de precios con vista previa — hecho
 - [ ] **3.2** P4 historial y restaurar; P5 borrador y aviso de cambios sin guardar; P6 agotado hoy.
 - [ ] **3.3** P8 cartel QR imprimible; P7 duplicar y reordenar.
 - [ ] **3.4** T5 guardado con control de versiones.
 
 ### Etapa 4 — Diferenciadores (2–3 semanas)
-- [ ] **4.1** C6 calculadora de asado y C7 fichas con tips.
+- [ ] **4.1** ~~C6 calculadora de asado~~ (hecha) y C7 fichas con tips.
 - [ ] **4.2** C11 PWA y T8 SEO local con datos estructurados.
 - [ ] **4.3** D2 tarjetas "foto primero", D3 tipografía, D5 accesibilidad completa.
 - [ ] **4.4** P9 métricas simples.

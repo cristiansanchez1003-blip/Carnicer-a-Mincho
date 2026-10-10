@@ -9,6 +9,11 @@ Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Frame
 ## ✨ Funcionalidades
 
 - **Menú público** (`/menu`) — 6 categorías y 40 productos de ejemplo (cortes chilenos: lomo vetado, punta de ganso, posta rosada, longaniza de Chillán…). Hero con el logotipo, navegación de categorías, modal de producto tipo bottom-sheet, precios con **unidad de venta** ($/kg, c/u, /docena), footer con **mapa de Google embebido**, WhatsApp y horario, y botón flotante de WhatsApp. 100 % mobile-first.
+- **Pedido por WhatsApp** — el cliente agrega productos (de a 0,5 kg), ve el total estimado y se abre WhatsApp con el mensaje ya escrito para la carnicería (los nombres siempre en español). El pedido queda guardado en su celular.
+- **"Abierto ahora"** — el horario se define por día en el panel (hasta 3 tramos) y el menú muestra si está abierto en hora de Chile; el pie muestra la tabla de horarios.
+- **Calculadora de asado** — según personas (adultos, niños, apetito) sugiere kilos y cortes reales del menú que estén disponibles, y los agrega al pedido.
+- **Inglés completo** — botón ES/EN; los productos, categorías, eslogan y horario están traducidos y se editan desde el panel.
+- **Ajuste masivo de precios** — en el panel, sube o baja un porcentaje o monto a todo el menú o a una categoría, con vista previa y redondeo; la portada muestra "Precios actualizados el…".
 - **Modo oscuro por defecto** — el letrero Mincho sobre negro; el cliente puede cambiar a modo claro (fondo crema madera) y su elección queda guardada en el navegador. El logotipo cambia según el tema.
 - **Panel admin** (`/admin`) — login con usuario y contraseña (cookie httpOnly firmada con HMAC).
   - Productos: crear, editar, eliminar, reordenar, disponibilidad, búsqueda, filtro por categoría y **unidad de venta** (kilo / unidad / docena).

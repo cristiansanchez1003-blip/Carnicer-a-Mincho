@@ -1,11 +1,65 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { formatPrice } from '@/lib/format'
+import { formatCLP, formatPrice, formatQuantity } from '@/lib/format'
+import { normalizeQty, stepFor } from '@/lib/order'
+import { useOrder } from '@/contexts/OrderContext'
+import QuantityStepper from './QuantityStepper'
 import { localizedField } from '@/lib/i18n'
 import { useApp } from '@/contexts/AppContext'
 import ProductImage from './ProductImage'
+
+// Selector de cantidad y botón "Agregar al pedido" dentro del modal.
+function ModalOrder({ product, onDone }) {
+  const { lang, t } = useApp()
+  const { qtyOf, setQty, remove } = useOrder()
+  const unit = product.unit || 'kg'
+  const inOrder = qtyOf(product.id)
+  const [qty, setLocalQty] = useState(inOrder || 1)
+
+  return (
+    <div className="mt-5 border-t border-linen pt-5 dark:border-linendark">
+      {inOrder > 0 && (
+        <p className="mb-2 text-[12.5px] font-semibold text-muted dark:text-muteddark">
+          {t('inOrder', { qty: formatQuantity(inOrder, unit, lang) })}
+        </p>
+      )}
+      <div className="flex items-center justify-between gap-3">
+        <QuantityStepper
+          qty={qty}
+          unit={unit}
+          onChange={(delta) => setLocalQty((q) => normalizeQty(q + delta * stepFor(unit), unit))}
+        />
+        <span className="font-playfair text-[20px] font-bold text-ink dark:text-paper">
+          {formatCLP(Math.round(product.price * qty))}
+        </span>
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          setQty(product.id, qty, unit)
+          onDone()
+        }}
+        className="mt-3 w-full rounded-xl bg-forest py-3.5 text-[15px] font-bold text-white shadow-nav active:scale-[0.98] dark:bg-mint dark:text-ink"
+      >
+        {inOrder > 0 ? t('updateOrder') : t('addToOrder')}
+      </button>
+      {inOrder > 0 && (
+        <button
+          type="button"
+          onClick={() => {
+            remove(product.id)
+            onDone()
+          }}
+          className="mt-2 w-full py-2 text-[13px] font-bold text-muted underline underline-offset-2 dark:text-muteddark"
+        >
+          {t('remove')}
+        </button>
+      )}
+    </div>
+  )
+}
 
 // Modal de producto estilo bottom-sheet: sube desde abajo en el celular
 // y se puede cerrar deslizando hacia abajo, tocando el fondo o con la X.
@@ -118,6 +172,10 @@ export default function ProductModal({ product, emoji, onClose }) {
                   </span>
                 )}
               </div>
+
+              {product.available !== false && (
+                <ModalOrder key={product.id} product={product} onDone={onClose} />
+              )}
             </div>
           </motion.div>
         </motion.div>
