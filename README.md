@@ -140,6 +140,21 @@ public/logo-light.jpeg    Logotipo para modo claro
 
 ---
 
+## 🌿 Ramas: una sola, `main`
+
+Todo vive en **`main`**: el código, el menú (`data/menu.json`), el despliegue de producción en
+Vercel y los guardados del panel de administración. No se crean otras ramas de trabajo
+permanentes.
+
+- Los guardados del panel son commits en `main` que **no reconstruyen el sitio** (`vercel.json`
+  los ignora porque el menú se lee en vivo desde GitHub); los cambios de código sí.
+- Si algún día se cambia la rama, hay que cambiar a la vez la rama de producción en Vercel y la
+  variable `GITHUB_BRANCH` (que por defecto es `main`).
+- Antes de subir cambios locales: `git pull` (el panel agrega commits con el menú) y luego
+  `npm test` y `npm run build`.
+
+---
+
 ## 🔒 Notas de seguridad
 
 - La contraseña **nunca** está en el código: vive en variables de entorno.
