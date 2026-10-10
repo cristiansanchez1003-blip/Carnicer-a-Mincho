@@ -121,14 +121,16 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
       `main`, Vercel produce desde `main` y el código usa `main` por defecto.
 - [x] **0.2** Producción en Vercel desde `main` (ya era la rama de producción; ahora el panel
       también guarda ahí, así que ya no puede volver a desalinearse).
-- [ ] **0.3** Entrar al panel real → Ajustes → **Probar conexiones**. *Hecho cuando* Cloudinary y
-      GitHub salen en verde (si Cloudinary sale en rojo, el mensaje dice qué variable corregir).
+- [ ] **0.3** Entrar al panel real → Ajustes → **Probar conexiones**. *Hecho cuando* "Subida de
+      fotos" y "Guardado del menú" salen en verde. Las fotos ya no usan Cloudinary: se guardan en
+      el mismo repositorio (`data/images/`) con el mismo token de GitHub que guarda el menú.
 - [ ] **0.4** Subir una foto real desde el celular de Nicolás. *Hecho cuando* aparece en el menú.
 - [ ] **0.5** Seguridad (decide Nicolás/Cristian): el archivo `.env.local` ya no está en el código
       actual, pero **sigue en el historial público** (commit `474f9ce`). Conviene cambiar la
       contraseña y `AUTH_SECRET` en Vercel y dejar el repositorio privado. Es independiente del resto.
-- [ ] **0.6** Confirmar con Nicolás el número de la calle (hoy dice 19881; el pin queda al lado de
-      Comercio 19856) y que el pin cae en su puerta.
+- [x] **0.6** Número de calle y pin: el pin cae en la puerta de la carnicería (confirmado por
+      Cristian el 2026-10-10); el texto "Comercio 19881" se deja como está. La ficha de Google
+      Business tiene la ubicación desfasada y se corrige después, como regalo para Nicolás.
 
 ### Etapa 1 — Contenido y confianza (1 semana, casi sin código)
 - [ ] **1.1** Jornada de fotos (C: Nicolás): guía de 1 página (luz natural, fondo oscuro o madera,

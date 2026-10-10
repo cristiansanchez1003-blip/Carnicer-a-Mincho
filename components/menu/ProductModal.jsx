@@ -142,6 +142,7 @@ export default function ProductModal({ product, emoji, onClose }) {
               src={product.image}
               alt={name}
               emoji={emoji}
+              sizes="(min-width: 448px) 448px, 100vw"
               className="h-56 w-full sm:h-64"
             />
 

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { checkCloudinary, checkGithub, checkSite, tokenDaysLeft } from '../lib/health.js'
+import { checkGithub, checkImages, checkSite, tokenDaysLeft } from '../lib/health.js'
 
 const res = (status, { body = '', headers = {} } = {}) => ({
   ok: status >= 200 && status < 300,
@@ -9,8 +9,6 @@ const res = (status, { body = '', headers = {} } = {}) => ({
   text: async () => (typeof body === 'string' ? body : JSON.stringify(body)),
   json: async () => (typeof body === 'string' ? JSON.parse(body) : body),
 })
-
-const cloud = { cloudName: 'micloud', apiKey: 'key123', apiSecret: 'sec456' }
 
 test('tokenDaysLeft calcula los días que faltan según el encabezado de GitHub', () => {
   const now = Date.UTC(2026, 9, 8, 12, 0, 0)
@@ -22,47 +20,50 @@ test('tokenDaysLeft devuelve null si no hay encabezado o es ilegible', () => {
   assert.equal(tokenDaysLeft('cualquier cosa', Date.now()), null)
 })
 
-test('Cloudinary: credenciales correctas dan nivel ok y se consulta con Basic auth', async () => {
+const gh = { token: 'ghp_test', repo: 'dueno/repo', branch: 'master' }
+
+test('Fotos: si GitHub permite crear el blob de prueba, está ok y no se hace ningún commit', async () => {
   let seen
   const fetchImpl = async (url, opts) => {
     seen = { url, opts }
-    return res(200, { body: { plan: 'Free' } })
+    return res(201, { body: { sha: 'abc' } })
   }
-  const r = await checkCloudinary(cloud, { fetchImpl })
+  const r = await checkImages(gh, { fetchImpl })
   assert.equal(r.level, 'ok')
-  assert.equal(seen.url, 'https://api.cloudinary.com/v1_1/micloud/usage')
-  assert.equal(seen.opts.headers.Authorization, 'Basic ' + Buffer.from('key123:sec456').toString('base64'))
+  assert.equal(seen.url, 'https://api.github.com/repos/dueno/repo/git/blobs')
+  assert.equal(seen.opts.method, 'POST')
+  assert.equal(seen.opts.headers.Authorization, 'Bearer ghp_test')
 })
 
-test('Cloudinary: sin configuración es un error que nombra las variables que faltan', async () => {
-  const r = await checkCloudinary(null, { missing: ['CLOUDINARY_API_KEY'] })
-  assert.equal(r.level, 'error')
-  assert.match(r.message, /CLOUDINARY_API_KEY/)
-})
-
-test('Cloudinary: cloud name inválido se explica con la variable correcta', async () => {
-  const fetchImpl = async () => res(401, { body: { error: { message: 'Invalid cloud_name micloud' } } })
-  const r = await checkCloudinary(cloud, { fetchImpl })
-  assert.equal(r.level, 'error')
-  assert.match(r.message, /CLOUDINARY_CLOUD_NAME/)
-})
-
-test('Cloudinary: un fallo de red no lanza excepción', async () => {
-  const fetchImpl = async () => {
-    throw new Error('getaddrinfo ENOTFOUND')
+test('Fotos: sin permiso de escritura (403/404) explica qué permiso falta', async () => {
+  for (const status of [403, 404]) {
+    const r = await checkImages(gh, { fetchImpl: async () => res(status, { body: { message: 'x' } }) })
+    assert.equal(r.level, 'error', String(status))
+    assert.match(r.message, /Contents: Read and write/)
   }
-  const r = await checkCloudinary(cloud, { fetchImpl })
+})
+
+test('Fotos: token vencido (401) nombra GITHUB_TOKEN', async () => {
+  const r = await checkImages(gh, { fetchImpl: async () => res(401, { body: { message: 'Bad credentials' } }) })
   assert.equal(r.level, 'error')
-  assert.match(r.message, /conectar/i)
+  assert.match(r.message, /GITHUB_TOKEN/)
 })
 
-test('Cloudinary: el mensaje nunca incluye el API Secret', async () => {
-  const fetchImpl = async () => res(400, { body: { error: { message: 'rarísimo sec456 rarísimo' } } })
-  const r = await checkCloudinary(cloud, { fetchImpl })
-  assert.doesNotMatch(r.message, /sec456/)
+test('Fotos: sin token avisa que no persisten en Vercel', async () => {
+  const r = await checkImages(null)
+  assert.equal(r.level, 'warn')
+  assert.match(r.message, /GITHUB_TOKEN/)
 })
 
-const gh = { token: 'ghp_test', repo: 'dueno/repo', branch: 'master' }
+test('Fotos: un fallo de red no lanza excepción ni filtra el token', async () => {
+  const r = await checkImages(gh, {
+    fetchImpl: async () => {
+      throw new Error('network down ghp_test')
+    },
+  })
+  assert.equal(r.level, 'error')
+  assert.doesNotMatch(r.message, /ghp_test/)
+})
 
 test('GitHub: lectura correcta con vencimiento lejano es ok', async () => {
   const now = Date.UTC(2026, 9, 8)

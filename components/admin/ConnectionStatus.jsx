@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const ROWS = [
-  { key: 'cloudinary', label: 'Fotos (Cloudinary)' },
+  { key: 'images', label: 'Subida de fotos' },
   { key: 'github', label: 'Guardado del menú (GitHub)' },
   { key: 'site', label: 'Sitio publicado (Vercel)' },
 ]

@@ -6,7 +6,7 @@ import { compressImage } from '@/lib/imageCompress'
 import { buildProductForm, normalizeProductForm } from '@/lib/productForm'
 
 // Formulario de crear/editar producto en modal bottom-sheet.
-// La imagen se puede subir a Cloudinary o pegar una URL directa.
+// La imagen se puede subir desde el celular o pegar una URL directa.
 export default function ProductForm({ product, categories, onSave, onClose, uploadImage }) {
   const isNew = !product?.id
   const [form, setForm] = useState(null)
@@ -137,7 +137,7 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                       {uploadError}
                       <span className="mt-0.5 block font-normal text-ink/70">
                         También puedes pegar la dirección (URL) de la imagen abajo. Para revisar
-                        la conexión con Cloudinary: Ajustes → Estado de las conexiones.
+                        la conexión: Ajustes → Estado de las conexiones.
                       </span>
                     </p>
                   )}
@@ -148,8 +148,15 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                 <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
                   URL de imagen (opcional)
                 </span>
+                {/* type="text": una foto subida desde el panel queda como ruta del sitio
+                    (/api/img/…), que un campo type="url" rechazaría como inválida. */}
                 <input
-                  type="url"
+                  type="text"
+                  inputMode="url"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  pattern="https://\S+|/[^/\s]\S*"
+                  title="Una dirección que empiece con https:// (o la ruta de una foto ya subida)"
                   value={form.image}
                   onChange={(e) => set('image', e.target.value)}
                   placeholder="https://…"

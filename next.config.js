@@ -2,17 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // `next dev` no debe crear AGENTS.md por su cuenta en el repositorio.
+  agentRules: false,
   // Fija la raíz del proyecto (hay otro package-lock.json en la carpeta de usuario).
   turbopack: { root: __dirname },
+  // Las fotos subidas desde el panel viven en data/images (se leen por GitHub en producción);
+  // no deben empaquetarse dentro de las funciones, que solo las usarían en desarrollo local.
+  outputFileTracingExcludes: {
+    '/api/img/[name]': ['./data/images/**'],
+    '/api/admin/upload': ['./data/images/**'],
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
       },
     ],
   },

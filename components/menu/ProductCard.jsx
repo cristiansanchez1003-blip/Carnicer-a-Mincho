@@ -81,6 +81,7 @@ export default function ProductCard({ product, emoji, onSelect }) {
           src={product.image}
           alt={name}
           emoji={emoji}
+          sizes="76px"
           className="h-[76px] w-[76px] rounded-xl"
         />
       </button>

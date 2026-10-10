@@ -28,7 +28,7 @@ test('un 413 de la plataforma se explica en español claro', () => {
 })
 
 test('el mensaje del servidor tiene prioridad cuando existe', () => {
-  assert.equal(uploadErrorMessage(502, { error: 'La API Key de Cloudinary no es válida.' }), 'La API Key de Cloudinary no es válida.')
+  assert.equal(uploadErrorMessage(502, { error: 'GitHub rechazó el token.' }), 'GitHub rechazó el token.')
 })
 
 test('sesión vencida pide volver a ingresar', () => {

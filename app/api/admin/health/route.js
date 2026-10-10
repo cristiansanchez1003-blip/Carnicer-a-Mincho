@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
-import { readCloudinaryConfig } from '@/lib/cloudinary'
 import { githubConfig } from '@/lib/menuStore'
-import { checkCloudinary, checkGithub, checkSite } from '@/lib/health'
+import { checkGithub, checkImages, checkSite } from '@/lib/health'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 20
@@ -17,12 +16,8 @@ export async function GET(request) {
   }
 
   const github = githubConfig()
-  const { config, missing } = readCloudinaryConfig()
 
-  const [cloudinary, githubStatus] = await Promise.all([
-    checkCloudinary(config, { missing }),
-    checkGithub(github),
-  ])
+  const [images, githubStatus] = await Promise.all([checkImages(github), checkGithub(github)])
 
   const site = checkSite({
     vercelEnv: process.env.VERCEL_ENV,
@@ -31,7 +26,7 @@ export async function GET(request) {
   })
 
   return NextResponse.json(
-    { cloudinary, github: githubStatus, site },
+    { images, github: githubStatus, site },
     { headers: { 'Cache-Control': 'no-store' } }
   )
 }

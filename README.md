@@ -2,7 +2,7 @@
 
 Menú digital para **Carnicería Mincho** (Comercio 19881, San José de Maipo, Región Metropolitana, Chile). Los clientes escanean un QR y ven el catálogo en su celular; Gloria administra productos, precios, fotos y datos del local desde un panel privado con usuario y contraseña.
 
-Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Framer Motion** y **qrcode.react**, sobre la misma arquitectura probada de El Café de Pirque. **Sin base de datos pagada**: el catálogo vive en `data/menu.json` dentro de este repositorio y el panel admin lo edita mediante la **API de GitHub** (gratis, con historial de cambios). Las fotos se suben a **Cloudinary** (plan gratuito).
+Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Framer Motion** y **qrcode.react**, sobre la misma arquitectura probada de El Café de Pirque. **Sin base de datos pagada**: el catálogo vive en `data/menu.json` dentro de este repositorio y el panel admin lo edita mediante la **API de GitHub** (gratis, con historial de cambios). Las fotos también viven en el repositorio (`data/images/`), así que **no hay ningún servicio externo** además de GitHub y Vercel.
 
 ---
 
@@ -17,7 +17,7 @@ Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Frame
 - **Modo oscuro por defecto** — el letrero Mincho sobre negro; el cliente puede cambiar a modo claro (fondo crema madera) y su elección queda guardada en el navegador. El logotipo cambia según el tema.
 - **Panel admin** (`/admin`) — login con usuario y contraseña (cookie httpOnly firmada con HMAC).
   - Productos: crear, editar, eliminar, reordenar, disponibilidad, búsqueda, filtro por categoría y **unidad de venta** (kilo / unidad / docena).
-  - Imágenes: subida directa a Cloudinary o pegando una URL.
+  - Imágenes: subir la foto desde el celular (se reduce sola antes de subir y queda guardada en el repositorio) o pegar una URL.
   - Categorías: crear, renombrar, cambiar emoji, eliminar.
   - Ajustes del local: horario, dirección, mapa embebido, WhatsApp, Instagram (opcional), correo (opcional), eslogan.
   - Código QR descargable en PNG.
@@ -69,7 +69,7 @@ npm run dev
 ### Comprobaciones
 
 ```bash
-npm test        # pruebas automáticas (lib/): autenticación, Cloudinary, GitHub, validación del menú
+npm test        # pruebas automáticas (lib/): autenticación, fotos, GitHub, validación del menú
 npm run lint    # ESLint
 npm run build   # compilación de producción
 ```
@@ -92,9 +92,6 @@ En **Vercel → Project → Settings → Environment Variables** agrega:
 | `GITHUB_TOKEN` | token *fine-grained* con permiso **Contents: Read & Write** solo sobre este repo |
 | `GITHUB_REPO` | `cristiansanchez1003-blip/Carnicer-a-Mincho` |
 | `GITHUB_BRANCH` | `main` (opcional: es el valor por defecto) |
-| `CLOUDINARY_CLOUD_NAME` | desde el dashboard de Cloudinary |
-| `CLOUDINARY_API_KEY` | desde el dashboard de Cloudinary |
-| `CLOUDINARY_API_SECRET` | desde el dashboard de Cloudinary |
 | `NEXT_PUBLIC_SITE_URL` | URL pública (ej: `https://menucarniceriamincho.vercel.app`) |
 
 ### Crear el token de GitHub
@@ -104,11 +101,14 @@ En **Vercel → Project → Settings → Environment Variables** agrega:
 3. Permissions → Repository permissions → **Contents: Read and write**.
 4. Expiración: 1 año (renovar cuando expire). Copia el token a Vercel.
 
-### Crear la cuenta de Cloudinary (gratis)
+### Fotos de productos
 
-1. Regístrate en [cloudinary.com](https://cloudinary.com).
-2. En el **Dashboard** copia *Cloud name*, *API Key* y *API Secret* a Vercel.
-3. Sin Cloudinary el panel funciona igual: se puede pegar la URL de cualquier imagen.
+No requieren cuenta ni claves extra: al subir una foto, el panel la guarda como archivo en
+`data/images/` del mismo repositorio (con el mismo token de GitHub) y el sitio la entrega desde
+`/api/img/<nombre>`. El nombre sale del contenido de la foto, así que nunca cambia y se cachea un
+año; subir la misma foto dos veces no duplica nada. Un cambio que solo toca `data/` no
+reconstruye el sitio (`vercel.json`). Las variables `CLOUDINARY_*` que existieran en Vercel ya no
+se usan y se pueden borrar.
 
 > Después de agregar o cambiar variables, haz **Redeploy** en Vercel.
 
@@ -129,7 +129,8 @@ app/
     menu/route.js         GET menú (público)
     auth/…                login / logout / me (cookie firmada)
     admin/menu/route.js   PUT menú completo (commit a GitHub)
-    admin/upload/route.js POST imagen a Cloudinary
+    admin/upload/route.js POST foto → data/images del repositorio
+    img/[name]/route.js   GET foto (cacheable un año)
 components/
   menu/                   Hero, CategoryNav, ControlsBar (toggle de tema),
                           ProductCard, ProductModal, ProductImage, Footer, WhatsappFab
