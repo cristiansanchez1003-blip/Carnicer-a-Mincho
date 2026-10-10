@@ -2,6 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { readBody, uploadErrorMessage } from '@/lib/uploadErrors'
+import { todayISO } from '@/lib/format'
+import { applyAdjustment } from '@/lib/pricing'
+
+// Deja registrado el día en que cambiaron los precios (se muestra en el menú público).
+function markPricesUpdated(menu) {
+  menu.settings = { ...menu.settings, pricesUpdatedAt: todayISO() }
+}
 
 // Hook del panel admin: mantiene una copia editable del menú en memoria
 // y la guarda completa mediante PUT /api/admin/menu (commit a GitHub).
@@ -94,12 +101,26 @@ export function useAdmin() {
       update((m) => {
         const idx = m.products.findIndex((p) => p.id === product.id)
         if (idx >= 0) {
+          if (m.products[idx].price !== product.price) markPricesUpdated(m)
           m.products[idx] = product
         } else {
+          markPricesUpdated(m)
           const siblings = m.products.filter((p) => p.categoryId === product.categoryId)
           product.sort = Math.max(0, ...siblings.map((p) => p.sort || 0)) + 1
           m.products.push(product)
         }
+        return m
+      })
+    },
+    [update]
+  )
+
+  // Ajuste masivo: aplica el cambio de precios a todo el menú o a una categoría.
+  const adjustPrices = useCallback(
+    (options) => {
+      update((m) => {
+        m.products = applyAdjustment(m.products, options)
+        markPricesUpdated(m)
         return m
       })
     },
@@ -196,6 +217,7 @@ export function useAdmin() {
     save,
     uploadImage,
     saveProduct,
+    adjustPrices,
     deleteProduct,
     toggleAvailable,
     moveProduct,

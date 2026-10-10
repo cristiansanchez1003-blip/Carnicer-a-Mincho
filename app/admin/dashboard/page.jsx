@@ -10,6 +10,7 @@ import SettingsForm from '@/components/admin/SettingsForm'
 import CategoryManager from '@/components/admin/CategoryManager'
 import QRSection from '@/components/admin/QRSection'
 import ConnectionStatus from '@/components/admin/ConnectionStatus'
+import BulkPriceModal from '@/components/admin/BulkPriceModal'
 
 const TABS = [
   { id: 'productos', label: 'Productos', emoji: '🍽️' },
@@ -27,6 +28,7 @@ export default function DashboardPage() {
     save,
     uploadImage,
     saveProduct,
+    adjustPrices,
     deleteProduct,
     toggleAvailable,
     moveProduct,
@@ -40,6 +42,7 @@ export default function DashboardPage() {
   const [filterCat, setFilterCat] = useState('all')
   const [editing, setEditing] = useState(null) // producto en edición o {} para nuevo
   const [toast, setToast] = useState(null)
+  const [pricesOpen, setPricesOpen] = useState(false)
 
   const categories = useMemo(
     () => [...(menu?.categories || [])].sort((a, b) => (a.sort || 0) - (b.sort || 0)),
@@ -73,6 +76,14 @@ export default function DashboardPage() {
     } else {
       showToast(result.error || 'No se pudo guardar', false)
     }
+  }
+
+  function handleApplyPrices(options) {
+    adjustPrices(options)
+    setPricesOpen(false)
+    showToast(
+      `✓ Precios ajustados en ${options.changed} productos. Presiona "Guardar cambios" para publicarlos.`
+    )
   }
 
   function handleDelete(product) {
@@ -142,6 +153,12 @@ export default function DashboardPage() {
                 + Nuevo
               </button>
             </div>
+            <button
+              onClick={() => setPricesOpen(true)}
+              className="mt-2 w-full rounded-xl border border-linen bg-card py-2.5 text-[13.5px] font-bold text-ink/80 active:scale-[0.99]"
+            >
+              💲 Ajustar precios en bloque
+            </button>
 
             {/* Filtro por categoría */}
             <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1">
@@ -259,6 +276,14 @@ export default function DashboardPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <BulkPriceModal
+        open={pricesOpen}
+        categories={categories}
+        products={menu.products}
+        onApply={handleApplyPrices}
+        onClose={() => setPricesOpen(false)}
+      />
 
       <ProductForm
         product={editing}

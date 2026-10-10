@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { localizedField } from '@/lib/i18n'
+import { scheduleRows } from '@/lib/hours'
+import OpenStatus from './OpenStatus'
 import { useApp } from '@/contexts/AppContext'
 
 function ContactLink({ href, label, sub, children }) {
@@ -113,12 +115,30 @@ export default function Footer({ settings }) {
           </div>
         )}
 
-        {hours && (
+        {(settings.schedule || hours) && (
           <div className="mt-6 rounded-2xl border border-white/10 p-4 text-center">
             <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-mint">
               {t('hoursLabel')}
             </span>
-            <span className="mt-1 block text-[15px] font-bold text-white">{hours}</span>
+            {settings.schedule ? (
+              <>
+                <div className="mt-3">
+                  <OpenStatus schedule={settings.schedule} tone="onDark" />
+                </div>
+                <dl className="mt-4 space-y-2 text-left">
+                  {scheduleRows(settings.schedule, lang).map((row) => (
+                    <div key={row.days} className="flex items-baseline justify-between gap-4 text-[13.5px]">
+                      <dt className="font-bold text-white">{row.days}</dt>
+                      <dd className={row.closed ? 'text-right text-white/60' : 'text-right text-white/90'}>
+                        {row.text}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            ) : (
+              <span className="mt-1 block text-[15px] font-bold text-white">{hours}</span>
+            )}
           </div>
         )}
 

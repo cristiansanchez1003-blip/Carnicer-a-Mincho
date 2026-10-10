@@ -2,11 +2,13 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { localizedField } from '@/lib/i18n'
+import { formatDate } from '@/lib/format'
+import OpenStatus from './OpenStatus'
 import { useApp } from '@/contexts/AppContext'
 
 export default function Hero({ settings }) {
   const { scrollY } = useScroll()
-  const { lang, theme } = useApp()
+  const { lang, theme, t } = useApp()
   // Parallax sutil: el logo se desplaza y desvanece al hacer scroll
   const y = useTransform(scrollY, [0, 300], [0, 60])
   const opacity = useTransform(scrollY, [0, 260], [1, 0.25])
@@ -47,7 +49,9 @@ export default function Hero({ settings }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          {hours && (
+          {settings?.schedule ? (
+            <OpenStatus schedule={settings.schedule} />
+          ) : hours && (
             <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-mintsoft px-3.5 py-1.5 text-[13px] font-semibold text-forest dark:border-mint/25 dark:bg-carddark dark:text-mint">
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                 <circle cx="12" cy="12" r="9" />
@@ -71,6 +75,12 @@ export default function Hero({ settings }) {
             </a>
           )}
         </motion.div>
+
+        {settings?.pricesUpdatedAt && (
+          <p className="mt-3 text-center text-[12px] text-muted dark:text-muteddark">
+            {t('pricesUpdated', { date: formatDate(settings.pricesUpdatedAt, lang) })}
+          </p>
+        )}
       </motion.div>
     </header>
   )

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { describeSchedule, validateSchedule } from '@/lib/hours'
+import ScheduleEditor from './ScheduleEditor'
 
 // Editor de los datos del local: horario, dirección y canales de contacto.
 export default function SettingsForm({ settings, onSave }) {
@@ -16,12 +18,23 @@ export default function SettingsForm({ settings, onSave }) {
     onSave(next)
   }
 
+  // El horario por día es la fuente de verdad: de él salen los textos de horario (es / en).
+  function setSchedule(schedule) {
+    const next = { ...form, schedule }
+    if (!validateSchedule(schedule)) {
+      next.hours = describeSchedule(schedule, 'es')
+      next.hours_en = describeSchedule(schedule, 'en')
+    }
+    setForm(next)
+    onSave(next)
+  }
+
   const inputCls =
     'w-full rounded-xl border border-linen bg-paper px-3.5 py-2.5 text-[14.5px] text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-mint'
 
   const fields = [
     { key: 'slogan', label: 'Eslogan', type: 'text' },
-    { key: 'hours', label: 'Horario (se muestra en el menú)', type: 'text' },
+    { key: 'slogan_en', label: 'Eslogan en inglés', type: 'text' },
     { key: 'address', label: 'Dirección', type: 'text' },
     { key: 'mapsUrl', label: 'Link de Google Maps (botón "Cómo llegar")', type: 'url' },
     {
@@ -64,6 +77,8 @@ export default function SettingsForm({ settings, onSave }) {
           </label>
         ))}
       </div>
+
+      <ScheduleEditor schedule={form.schedule} onChange={setSchedule} />
     </section>
   )
 }

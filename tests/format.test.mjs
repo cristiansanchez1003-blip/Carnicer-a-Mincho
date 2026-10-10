@@ -42,3 +42,11 @@ test('formatDate devuelve vacío si la fecha no es válida', () => {
   assert.equal(formatDate('no es fecha', 'es'), '')
   assert.equal(formatDate(undefined, 'en'), '')
 })
+
+import { todayISO } from '../lib/format.js'
+
+test('todayISO entrega la fecha de hoy en Chile, no la de UTC', () => {
+  // 02:30 UTC del 11 de octubre = 23:30 del 10 de octubre en Santiago
+  assert.equal(todayISO(new Date('2026-10-11T02:30:00Z')), '2026-10-10')
+  assert.equal(todayISO(new Date('2026-10-11T15:00:00Z')), '2026-10-11')
+})

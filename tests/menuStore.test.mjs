@@ -213,3 +213,34 @@ test('acepta textos en inglés normales y categorías con nombre en inglés', ()
   m.categories[0].name_en = 'Beef'
   assert.equal(validateMenu(m), null)
 })
+
+// ---------- horario y fecha de precios ----------
+
+test('acepta un horario estructurado válido', () => {
+  const m = base()
+  m.settings.schedule = { mon: [['09:00', '14:00'], ['16:00', '19:00']], tue: [], wed: [['09:00', '14:00']] }
+  assert.equal(validateMenu(m), null)
+})
+
+test('rechaza un horario con horas inválidas', () => {
+  const m = base()
+  m.settings.schedule = { mon: [['9am', '14:00']] }
+  assert.match(validateMenu(m), /hora/i)
+})
+
+test('rechaza un horario con tramos superpuestos', () => {
+  const m = base()
+  m.settings.schedule = { mon: [['09:00', '14:00'], ['13:00', '18:00']] }
+  assert.match(validateMenu(m), /superpon/i)
+})
+
+test('la fecha de actualización de precios debe ser AAAA-MM-DD', () => {
+  const ok = base()
+  ok.settings.pricesUpdatedAt = '2026-10-10'
+  assert.equal(validateMenu(ok), null)
+  for (const bad of ['10/10/2026', 'ayer', '2026-13-45']) {
+    const m = base()
+    m.settings.pricesUpdatedAt = bad
+    assert.match(validateMenu(m), /fecha/i, bad)
+  }
+})

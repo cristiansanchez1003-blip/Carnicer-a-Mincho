@@ -6,12 +6,71 @@
     "address": "Comercio 19881, San José de Maipo, Región Metropolitana",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=-33.64164595672689%2C-70.35253057055382",
     "mapsEmbed": "https://www.google.com/maps?q=-33.64164595672689,-70.35253057055382&z=17&hl=es&output=embed",
-    "hours": "Lunes, Martes y Sábado 09:00 a 14:00 y 16:00 a 19:00 · Jueves y Viernes 09:00 a 14:00 y 16:00 a 20:00 · Miércoles 09:00 a 14:00",
-    "hours_en": "Mon, Tue & Sat 9:00 AM–2:00 PM and 4:00–7:00 PM · Thu & Fri 9:00 AM–2:00 PM and 4:00–8:00 PM · Wed 9:00 AM–2:00 PM",
+    "hours": "Lun, Mar y Sáb: 09:00–14:00 y 16:00–19:00 · Mié: 09:00–14:00 · Jue y Vie: 09:00–14:00 y 16:00–20:00 · Dom: cerrado",
+    "hours_en": "Mon, Tue & Sat: 9:00 AM–2:00 PM and 4:00 PM–7:00 PM · Wed: 9:00 AM–2:00 PM · Thu & Fri: 9:00 AM–2:00 PM and 4:00 PM–8:00 PM · Sun: closed",
     "whatsapp": "56974543692",
     "instagram": "",
     "instagramHandle": "",
-    "email": ""
+    "email": "",
+    "schedule": {
+      "mon": [
+        [
+          "09:00",
+          "14:00"
+        ],
+        [
+          "16:00",
+          "19:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "14:00"
+        ],
+        [
+          "16:00",
+          "19:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "14:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "14:00"
+        ],
+        [
+          "16:00",
+          "20:00"
+        ]
+      ],
+      "fri": [
+        [
+          "09:00",
+          "14:00"
+        ],
+        [
+          "16:00",
+          "20:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "14:00"
+        ],
+        [
+          "16:00",
+          "19:00"
+        ]
+      ],
+      "sun": []
+    }
   },
   "categories": [
     {
