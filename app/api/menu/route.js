@@ -4,11 +4,16 @@ import { readMenu } from '@/lib/menuStore'
 export const dynamic = 'force-dynamic'
 
 // Menú público: lo consume la vista /menu.
+// X-Menu-Source indica de dónde salió el dato ('github' | 'local' | 'local-fallback'):
+// 'local-fallback' significa que GitHub falló y se sirvió la copia incluida en el despliegue.
 export async function GET() {
   try {
-    const menu = await readMenu()
+    const { menu, source } = await readMenu({ withSource: true })
     return NextResponse.json(menu, {
-      headers: { 'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120' },
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
+        'X-Menu-Source': source,
+      },
     })
   } catch (err) {
     console.error('Error leyendo el menú:', err)
