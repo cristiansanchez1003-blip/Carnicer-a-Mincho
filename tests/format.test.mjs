@@ -50,3 +50,13 @@ test('todayISO entrega la fecha de hoy en Chile, no la de UTC', () => {
   assert.equal(todayISO(new Date('2026-10-11T02:30:00Z')), '2026-10-10')
   assert.equal(todayISO(new Date('2026-10-11T15:00:00Z')), '2026-10-11')
 })
+
+import { formatPhone } from '../lib/format.js'
+
+test('formatPhone separa un celular chileno y deja el resto con el +', () => {
+  assert.equal(formatPhone('56974543692'), '+56 9 7454 3692')
+  assert.equal(formatPhone('5622345678'), '+5622345678')
+  assert.equal(formatPhone(' 56 9 7454 3692 '), '+56 9 7454 3692')
+  assert.equal(formatPhone(''), '')
+  assert.equal(formatPhone(undefined), '')
+})

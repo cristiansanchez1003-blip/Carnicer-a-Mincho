@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { describeSchedule, validateSchedule } from '@/lib/hours'
 import ScheduleEditor from './ScheduleEditor'
+import NoticeEditor from './NoticeEditor'
 
 // Editor de los datos del local: horario, dirección y canales de contacto.
 export default function SettingsForm({ settings, onSave }) {
@@ -14,6 +15,13 @@ export default function SettingsForm({ settings, onSave }) {
 
   function set(field, value) {
     const next = { ...form, [field]: value }
+    setForm(next)
+    onSave(next)
+  }
+
+  // Cambia varios campos a la vez (el aviso de portada tiene tres).
+  function patch(changes) {
+    const next = { ...form, ...changes }
     setForm(next)
     onSave(next)
   }
@@ -44,6 +52,11 @@ export default function SettingsForm({ settings, onSave }) {
     },
     { key: 'whatsapp', label: 'WhatsApp (solo números, ej: 56912345678)', type: 'text' },
     {
+      key: 'phone',
+      label: 'Teléfono para llamadas (solo números, ej: 56912345678 — si queda vacío no se muestra el botón "Llamar")',
+      type: 'text',
+    },
+    {
       key: 'instagram',
       label: 'Link de Instagram (opcional — si queda vacío no se muestra)',
       type: 'url',
@@ -53,6 +66,11 @@ export default function SettingsForm({ settings, onSave }) {
       key: 'email',
       label: 'Correo de contacto (opcional — si queda vacío no se muestra)',
       type: 'email',
+    },
+    {
+      key: 'reviewUrl',
+      label: 'Link para dejar reseñas en Google (opcional — si queda vacío no se muestra el botón)',
+      type: 'url',
     },
   ]
 
@@ -77,6 +95,8 @@ export default function SettingsForm({ settings, onSave }) {
           </label>
         ))}
       </div>
+
+      <NoticeEditor settings={form} onChange={patch} />
 
       <ScheduleEditor schedule={form.schedule} onChange={setSchedule} />
     </section>

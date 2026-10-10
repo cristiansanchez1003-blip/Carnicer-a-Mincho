@@ -244,3 +244,44 @@ test('la fecha de actualización de precios debe ser AAAA-MM-DD', () => {
     assert.match(validateMenu(m), /fecha/i, bad)
   }
 })
+
+// ---------- teléfono, reseña y aviso de portada ----------
+
+test('el teléfono y el enlace de reseñas son opcionales, y si vienen deben ser válidos', () => {
+  const ok = base()
+  ok.settings.phone = '56974543692'
+  ok.settings.reviewUrl = 'https://g.page/r/abc/review'
+  assert.equal(validateMenu(ok), null)
+
+  const empty = base()
+  empty.settings.phone = ''
+  empty.settings.reviewUrl = ''
+  assert.equal(validateMenu(empty), null)
+
+  for (const phone of ['+56 9 7454 3692', '1234', 'llamar']) {
+    const m = base()
+    m.settings.phone = phone
+    assert.match(validateMenu(m), /tel[eé]fono/i, phone)
+  }
+  const bad = base()
+  bad.settings.reviewUrl = 'javascript:alert(1)'
+  assert.match(validateMenu(bad), /reviewUrl/)
+})
+
+test('el aviso de portada se valida: largo máximo y fecha real', () => {
+  const ok = base()
+  ok.settings.notice = 'Cerrado por feriado'
+  ok.settings.notice_en = 'Closed for the holiday'
+  ok.settings.noticeUntil = '2026-12-25'
+  assert.equal(validateMenu(ok), null)
+
+  const long = base()
+  long.settings.notice = 'x'.repeat(281)
+  assert.match(validateMenu(long), /aviso/i)
+
+  for (const bad of ['25/12/2026', 'mañana', '2026-02-30']) {
+    const m = base()
+    m.settings.noticeUntil = bad
+    assert.match(validateMenu(m), /aviso/i, bad)
+  }
+})

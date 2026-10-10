@@ -15,7 +15,10 @@ export function useMenu() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/menu')
+      // "no-cache": el navegador siempre revalida. Sin esto, el stale-while-revalidate de la API
+      // le deja mostrar hasta 2 minutos el menú de la visita anterior (p. ej. un precio viejo
+      // justo después de que el dueño lo cambió). La red de Vercel sigue cacheando 30 s.
+      const res = await fetch('/api/menu', { cache: 'no-cache' })
       if (!res.ok) throw new Error('No se pudo cargar el menú')
       const data = await res.json()
       setSettings(data.settings || null)

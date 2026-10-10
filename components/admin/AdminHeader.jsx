@@ -6,6 +6,7 @@ export default function AdminHeader({ dirty, saving, onSave }) {
   const router = useRouter()
 
   async function handleLogout() {
+    if (dirty && !window.confirm('Tienes cambios sin guardar. Si sales ahora, se perderán. ¿Salir igual?')) return
     await fetch('/api/auth/logout', { method: 'POST' })
     router.replace('/admin/login')
   }

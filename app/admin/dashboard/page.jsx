@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useAdmin } from '@/hooks/useAdmin'
 import AdminHeader from '@/components/admin/AdminHeader'
@@ -10,12 +10,14 @@ import SettingsForm from '@/components/admin/SettingsForm'
 import CategoryManager from '@/components/admin/CategoryManager'
 import QRSection from '@/components/admin/QRSection'
 import ConnectionStatus from '@/components/admin/ConnectionStatus'
+import HelpSection from '@/components/admin/HelpSection'
 import BulkPriceModal from '@/components/admin/BulkPriceModal'
 
 const TABS = [
   { id: 'productos', label: 'Productos', emoji: '🍽️' },
   { id: 'ajustes', label: 'Ajustes', emoji: '⚙️' },
   { id: 'qr', label: 'Código QR', emoji: '🔳' },
+  { id: 'ayuda', label: 'Ayuda', emoji: '❓' },
 ]
 
 export default function DashboardPage() {
@@ -43,6 +45,17 @@ export default function DashboardPage() {
   const [editing, setEditing] = useState(null) // producto en edición o {} para nuevo
   const [toast, setToast] = useState(null)
   const [pricesOpen, setPricesOpen] = useState(false)
+
+  // Si hay cambios sin guardar, el navegador avisa antes de cerrar o recargar la página.
+  useEffect(() => {
+    if (!dirty) return undefined
+    const warn = (event) => {
+      event.preventDefault()
+      event.returnValue = ''
+    }
+    window.addEventListener('beforeunload', warn)
+    return () => window.removeEventListener('beforeunload', warn)
+  }, [dirty])
 
   const categories = useMemo(
     () => [...(menu?.categories || [])].sort((a, b) => (a.sort || 0) - (b.sort || 0)),
@@ -124,7 +137,7 @@ export default function DashboardPage() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`flex-1 rounded-xl px-3 py-2.5 text-[13px] font-bold transition active:scale-95 ${
+              className={`flex-1 whitespace-nowrap rounded-xl px-1.5 py-2.5 text-[12.5px] font-bold transition active:scale-95 ${
                 tab === t.id
                   ? 'bg-ink text-mint shadow-nav'
                   : 'border border-linen bg-card text-ink/70'
@@ -230,6 +243,12 @@ export default function DashboardPage() {
         {tab === 'qr' && (
           <div className="mt-5">
             <QRSection />
+          </div>
+        )}
+
+        {tab === 'ayuda' && (
+          <div className="mt-5">
+            <HelpSection />
           </div>
         )}
       </div>

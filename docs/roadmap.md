@@ -32,6 +32,11 @@ seguridad, 72 pruebas automáticas, migración a Next 16 / React 19 (0 vulnerabi
 | P1 Ajuste masivo de precios con vista previa | ✅ Hecho |
 | P2 "Precios actualizados el…" | ✅ Hecho (se actualiza solo al cambiar un precio) |
 | D5 (parcial) cierre con Escape, contraste corregido, ícono de la pestaña | ✅ Hecho |
+| C3 Aviso editable en la portada (con fecha límite opcional y versión en inglés) | ✅ Hecho el 2026-10-10 (parte vacío: lo escribe Nicolás) |
+| C9 Botones "Llamar" y "Dejar una reseña en Google" en el pie | ✅ Hecho (aparecen solo si Nicolás completa el teléfono y/o el enlace en Ajustes) |
+| P5 (parcial) Aviso al cerrar o salir del panel con cambios sin guardar | ✅ Hecho (el borrador automático queda pendiente) |
+| P10 Pestaña "Ayuda" en el panel con 8 tareas paso a paso | ✅ Hecho |
+| Fotos subidas desde el panel, guardadas en el repositorio (sin Cloudinary) y servidas en variantes livianas | ✅ Hecho y probado en producción |
 
 ## 2. Las 5 ideas que más valor dan (en este orden)
 
@@ -121,10 +126,10 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
       `main`, Vercel produce desde `main` y el código usa `main` por defecto.
 - [x] **0.2** Producción en Vercel desde `main` (ya era la rama de producción; ahora el panel
       también guarda ahí, así que ya no puede volver a desalinearse).
-- [ ] **0.3** Entrar al panel real → Ajustes → **Probar conexiones**. *Hecho cuando* "Subida de
+- [x] **0.3** Entrar al panel real → Ajustes → **Probar conexiones**. *Hecho cuando* "Subida de
       fotos" y "Guardado del menú" salen en verde. Las fotos ya no usan Cloudinary: se guardan en
       el mismo repositorio (`data/images/`) con el mismo token de GitHub que guarda el menú.
-- [ ] **0.4** Subir una foto real desde el celular de Nicolás. *Hecho cuando* aparece en el menú.
+- [x] **0.4** Subir una foto real desde el panel (hecho el 2026-10-10: la subida funciona en producción).
 - [ ] **0.5** Seguridad (decide Nicolás/Cristian): el archivo `.env.local` ya no está en el código
       actual, pero **sigue en el historial público** (commit `474f9ce`). Conviene cambiar la
       contraseña y `AUTH_SECRET` en Vercel y dejar el repositorio privado. Es independiente del resto.
@@ -138,8 +143,9 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
       más vendidas. → resuelve D1 parcialmente.
 - [x] **1.2** Inglés completo (C8) — hecho: se prepara una propuesta de traducción de los 42 productos que
       faltan, Nicolás la revisa en una pasada.
-- [ ] **1.3** ~~P2 "Precios actualizados el…"~~ (hecho), C9 botón Llamar y reseñas, C3 aviso de portada.
-- [ ] **1.4** D1 placeholder con marca + P10 mini-guía de ayuda en el panel.
+- [x] **1.3** P2 "Precios actualizados el…", C9 botón Llamar y reseñas y C3 aviso de portada — hechos. *Pendiente de Nicolás:*
+      darnos el teléfono para llamadas y el enlace de reseñas de su ficha de Google (se cargan en Ajustes).
+- [ ] **1.4** D1 placeholder con marca (pendiente) — P10 mini-guía de ayuda en el panel: hecha.
 
 *Cierre:* ≥ 80 % de productos con foto real, 100 % en inglés, aviso y fecha visibles.
 

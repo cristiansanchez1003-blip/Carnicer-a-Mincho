@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { localizedField } from '@/lib/i18n'
 import { formatDate } from '@/lib/format'
+import { activeNotice } from '@/lib/notice'
 import OpenStatus from './OpenStatus'
 import { useApp } from '@/contexts/AppContext'
 
@@ -15,6 +16,7 @@ export default function Hero({ settings }) {
 
   const slogan = settings ? localizedField(settings, 'slogan', lang) : ''
   const hours = settings ? localizedField(settings, 'hours', lang) : ''
+  const notice = activeNotice(settings, lang)
 
   return (
     <header className="hero-texture relative overflow-hidden bg-paper pb-8 pt-10 dark:bg-paperdark">
@@ -75,6 +77,22 @@ export default function Hero({ settings }) {
             </a>
           )}
         </motion.div>
+
+        {notice && (
+          <motion.div
+            role="status"
+            className="mx-auto mt-5 flex max-w-sm items-start gap-2.5 rounded-2xl border border-gold/50 bg-gold/15 px-4 py-3 text-left dark:border-gold/40 dark:bg-gold/10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            <span aria-hidden="true" className="mt-px text-[17px] leading-none">📢</span>
+            <p className="min-w-0 whitespace-pre-line break-words text-[14px] font-semibold leading-snug text-ink dark:text-paper">
+              <span className="sr-only">{t('noticeLabel')}: </span>
+              {notice}
+            </p>
+          </motion.div>
+        )}
 
         {settings?.pricesUpdatedAt && (
           <p className="mt-3 text-center text-[12px] text-muted dark:text-muteddark">
