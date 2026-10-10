@@ -35,7 +35,11 @@ seguridad, 72 pruebas automáticas, migración a Next 16 / React 19 (0 vulnerabi
 | C3 Aviso editable en la portada (con fecha límite opcional y versión en inglés) | ✅ Hecho el 2026-10-10 (parte vacío: lo escribe Nicolás) |
 | C9 Botones "Llamar" y "Dejar una reseña en Google" en el pie | ✅ Hecho (aparecen solo si Nicolás completa el teléfono y/o el enlace en Ajustes) |
 | P5 (parcial) Aviso al cerrar o salir del panel con cambios sin guardar | ✅ Hecho (el borrador automático queda pendiente) |
-| P10 Pestaña "Ayuda" en el panel con 8 tareas paso a paso | ✅ Hecho |
+| P10 Pestaña "Ayuda" en el panel con 9 tareas paso a paso | ✅ Hecho |
+| C5 (parcial) Buscador del menú: por nombre o descripción, en español e inglés, sin importar tildes ni mayúsculas | ✅ Hecho el 2026-10-10 (las etiquetas de cocción quedan pendientes) |
+| C4 Productos destacados: Nicolás elige "Recién llegado", "Del día" o "Recomendado" por producto; aparecen en la pestaña "⭐ Destacados" y con etiqueta | ✅ Hecho (parte sin destacados) |
+| T4 Aviso en el panel cuando el acceso de GitHub vence en 15 días o menos, o ya falló | ✅ Hecho |
+| T2 GitHub Actions: pruebas, lint y compilación en cada cambio de código (`.github/workflows/ci.yml`) | ✅ Hecho |
 | Fotos subidas desde el panel, guardadas en el repositorio (sin Cloudinary) y servidas en variantes livianas | ✅ Hecho y probado en producción |
 
 ## 2. Las 5 ideas que más valor dan (en este orden)
@@ -154,8 +158,8 @@ Objetivo: que el sitio real tenga todas las correcciones y la ubicación nueva.
 - [x] **2.2** (hecho) C1 + D4: pedido por WhatsApp con kilos (pasos de 0,5 kg, nota por producto, total
       estimado, mensaje listo para enviar). *Hecho cuando* un pedido de prueba llega a WhatsApp con
       el formato correcto y los totales cuadran.
-- [ ] **2.3** C4 productos destacados y C5 buscador.
-- [ ] **2.4** T4 aviso de vencimiento del token y T2 GitHub Actions.
+- [x] **2.3** C4 productos destacados y C5 buscador — hechos. *Pendiente de Nicolás:* elegir qué productos destacar.
+- [x] **2.4** T4 aviso de vencimiento del token y T2 GitHub Actions — hechos.
 
 *Cierre:* pedido de prueba completo desde un celular; Nicolás lo usa una semana y da feedback.
 

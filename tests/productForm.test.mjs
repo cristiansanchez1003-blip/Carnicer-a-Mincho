@@ -43,3 +43,15 @@ test('los campos en inglés vacíos no se guardan, pero los completos sí', () =
 test('un precio ilegible se guarda como 0 en vez de NaN', () => {
   assert.equal(normalizeProductForm({ id: 'a', name: 'x', price: 'abc' }).price, 0)
 })
+
+test('el destacado se conserva al editar y un producto sin destacar no guarda el campo', () => {
+  const form = buildProductForm({ id: 'a', categoryId: 'vacuno', name: 'Filete', price: 1, highlight: 'star' }, cats)
+  assert.equal(form.highlight, 'star')
+  assert.equal(normalizeProductForm(form).highlight, 'star')
+
+  const plain = buildProductForm({ id: 'b', categoryId: 'vacuno', name: 'Lomo', price: 1 }, cats)
+  assert.equal(plain.highlight, '')
+  assert.equal('highlight' in normalizeProductForm(plain), false)
+  // el usuario elige "Sin destacar" en un producto que antes lo estaba
+  assert.equal('highlight' in normalizeProductForm({ ...form, highlight: '' }), false)
+})

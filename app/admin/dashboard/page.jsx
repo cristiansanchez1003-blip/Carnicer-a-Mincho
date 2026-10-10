@@ -11,6 +11,7 @@ import CategoryManager from '@/components/admin/CategoryManager'
 import QRSection from '@/components/admin/QRSection'
 import ConnectionStatus from '@/components/admin/ConnectionStatus'
 import HelpSection from '@/components/admin/HelpSection'
+import TokenAlert from '@/components/admin/TokenAlert'
 import BulkPriceModal from '@/components/admin/BulkPriceModal'
 
 const TABS = [
@@ -131,6 +132,8 @@ export default function DashboardPage() {
       <AdminHeader dirty={dirty} saving={saving} onSave={handleSave} />
 
       <div className="mx-auto max-w-3xl px-4">
+        <TokenAlert />
+
         {/* Pestañas */}
         <div className="mt-4 flex gap-2">
           {TABS.map((t) => (

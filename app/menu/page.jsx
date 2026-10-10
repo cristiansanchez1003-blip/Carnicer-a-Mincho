@@ -6,6 +6,8 @@ import { useMenu } from '@/hooks/useMenu'
 import { AppProvider, useApp } from '@/contexts/AppContext'
 import { OrderProvider, useOrder } from '@/contexts/OrderContext'
 import { localizedField } from '@/lib/i18n'
+import { isSearching, searchProducts } from '@/lib/search'
+import { FEATURED_CATEGORY, FEATURED_ID, featuredProducts } from '@/lib/highlights'
 import Hero from '@/components/menu/Hero'
 import CategoryNav from '@/components/menu/CategoryNav'
 import ProductCard from '@/components/menu/ProductCard'
@@ -15,6 +17,7 @@ import WhatsappFab from '@/components/menu/WhatsappFab'
 import OrderBar from '@/components/menu/OrderBar'
 import OrderDrawer from '@/components/menu/OrderDrawer'
 import AsadoCalculator from '@/components/menu/AsadoCalculator'
+import SearchBox from '@/components/menu/SearchBox'
 
 function SkeletonMenu() {
   return (
@@ -42,34 +45,45 @@ function MenuContent() {
   const { count: orderCount } = useOrder()
   const [activeId, setActiveId] = useState(null)
   const [selected, setSelected] = useState(null)
+  const [query, setQuery] = useState('')
 
   const visibleCategories = useMemo(() => {
     return categories.filter((c) => products.some((p) => p.categoryId === c.id))
   }, [categories, products])
 
+  // Los destacados del dueño forman una pestaña "⭐ Destacados" que va primero (solo si hay).
+  const featured = useMemo(() => featuredProducts(products, categories), [products, categories])
+  const navCategories = useMemo(
+    () => (featured.length > 0 ? [FEATURED_CATEGORY, ...visibleCategories] : visibleCategories),
+    [featured, visibleCategories]
+  )
+
   useEffect(() => {
-    if ((!activeId || !visibleCategories.some((c) => c.id === activeId)) && visibleCategories.length > 0) {
-      setActiveId(visibleCategories[0].id)
+    if ((!activeId || !navCategories.some((c) => c.id === activeId)) && navCategories.length > 0) {
+      setActiveId(navCategories[0].id)
     }
-  }, [visibleCategories, activeId])
+  }, [navCategories, activeId])
 
   const activeCategory = useMemo(
-    () => visibleCategories.find((c) => c.id === activeId) || null,
-    [visibleCategories, activeId]
+    () => navCategories.find((c) => c.id === activeId) || null,
+    [navCategories, activeId]
   )
 
   const activeProducts = useMemo(
     () =>
-      products
-        .filter((p) => p.categoryId === activeId)
-        .sort((a, b) => (a.sort || 0) - (b.sort || 0)),
-    [products, activeId]
+      activeId === FEATURED_ID
+        ? featured
+        : products
+            .filter((p) => p.categoryId === activeId)
+            .sort((a, b) => (a.sort || 0) - (b.sort || 0)),
+    [products, activeId, featured]
   )
 
-  const selectedEmoji = useMemo(() => {
-    if (!selected) return '☕'
-    return categories.find((c) => c.id === selected.categoryId)?.emoji || '☕'
-  }, [selected, categories])
+  const searching = isSearching(query)
+  const results = useMemo(() => searchProducts(products, query), [products, query])
+  const emojiOf = (categoryId) => categories.find((c) => c.id === categoryId)?.emoji || '🥩'
+
+  const selectedEmoji = selected ? emojiOf(selected.categoryId) : '🥩'
 
   return (
     <div className={theme === 'dark' ? 'dark' : ''}>
@@ -82,8 +96,17 @@ function MenuContent() {
 
         {!loading && !error && <AsadoCalculator products={products} />}
 
-        {!loading && visibleCategories.length > 0 && (
-          <CategoryNav categories={visibleCategories} activeId={activeId} onSelect={setActiveId} />
+        {!loading && !error && products.length > 0 && <SearchBox value={query} onChange={setQuery} />}
+
+        {!loading && navCategories.length > 0 && (
+          <CategoryNav
+            categories={navCategories}
+            activeId={searching ? null : activeId}
+            onSelect={(id) => {
+              setQuery('')
+              setActiveId(id)
+            }}
+          />
         )}
 
         {error ? (
@@ -96,38 +119,38 @@ function MenuContent() {
         ) : (
           <AnimatePresence mode="wait">
             <motion.section
-              key={activeId}
+              key={searching ? 'search' : activeId}
               initial={{ opacity: 0, x: 18 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -18 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               className="px-4 pb-6 pt-6"
             >
-              {activeCategory && (
+              {(searching || activeCategory) && (
                 <div className="mb-3.5 flex items-center gap-2.5 px-1">
                   <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-mint/60 text-lg dark:bg-forest/30">
-                    {activeCategory.emoji}
+                    {searching ? '🔎' : activeCategory.emoji}
                   </span>
                   <h2 className="font-playfair text-[21px] font-bold text-ink dark:text-paper">
-                    {localizedField(activeCategory, 'name', lang)}
+                    {searching ? t('searchResults') : localizedField(activeCategory, 'name', lang)}
                   </h2>
                   <span className="ml-auto rounded-full bg-ink/5 px-2.5 py-1 text-[11.5px] font-bold text-muted dark:bg-paper/10 dark:text-muteddark">
-                    {activeProducts.length}
+                    {searching ? results.length : activeProducts.length}
                   </span>
                 </div>
               )}
 
-              {activeProducts.length === 0 ? (
-                <p className="py-16 text-center text-[14px] text-muted dark:text-muteddark">
-                  {t('emptyCategory')}
+              {(searching ? results : activeProducts).length === 0 ? (
+                <p role="status" className="py-16 text-center text-[14px] text-muted dark:text-muteddark">
+                  {searching ? t('noResults', { q: query.trim() }) : t('emptyCategory')}
                 </p>
               ) : (
                 <div className="flex flex-col gap-2.5">
-                  {activeProducts.map((product) => (
+                  {(searching ? results : activeProducts).map((product) => (
                     <ProductCard
                       key={product.id}
                       product={product}
-                      emoji={activeCategory?.emoji}
+                      emoji={searching || activeId === FEATURED_ID ? emojiOf(product.categoryId) : activeCategory?.emoji}
                       onSelect={setSelected}
                     />
                   ))}

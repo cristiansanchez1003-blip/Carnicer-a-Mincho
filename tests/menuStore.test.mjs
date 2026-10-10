@@ -285,3 +285,16 @@ test('el aviso de portada se valida: largo máximo y fecha real', () => {
     assert.match(validateMenu(m), /aviso/i, bad)
   }
 })
+
+// ---------- productos destacados ----------
+
+test('la etiqueta de destacado es opcional y solo admite las definidas', () => {
+  for (const ok of [undefined, '', 'new', 'today', 'star']) {
+    const m = base()
+    if (ok !== undefined) m.products[0].highlight = ok
+    assert.equal(validateMenu(m), null, String(ok))
+  }
+  const bad = base()
+  bad.products[0].highlight = 'oferta'
+  assert.match(validateMenu(bad), /destacado/i)
+})

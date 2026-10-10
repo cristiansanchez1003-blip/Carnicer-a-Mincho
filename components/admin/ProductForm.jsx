@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { compressImage } from '@/lib/imageCompress'
 import { buildProductForm, normalizeProductForm } from '@/lib/productForm'
+import { HIGHLIGHTS, HIGHLIGHT_LABELS } from '@/lib/highlights'
 
 // Formulario de crear/editar producto en modal bottom-sheet.
 // La imagen se sube desde el celular (no se pega ninguna dirección).
@@ -256,6 +257,27 @@ export default function ProductForm({ product, categories, onSave, onClose, uplo
                     </option>
                   ))}
                 </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-1 block text-[12.5px] font-bold text-ink/70">
+                  Destacar en el menú (opcional)
+                </span>
+                <select
+                  value={form.highlight || ''}
+                  onChange={(e) => set('highlight', e.target.value)}
+                  className={inputCls}
+                >
+                  <option value="">No destacar</option>
+                  {HIGHLIGHTS.map((key) => (
+                    <option key={key} value={key}>
+                      ⭐ {HIGHLIGHT_LABELS.es[key]}
+                    </option>
+                  ))}
+                </select>
+                <span className="mt-1 block text-[12px] text-muted">
+                  Los destacados disponibles aparecen primero, en la pestaña “⭐ Destacados”.
+                </span>
               </label>
 
               <label className="flex items-center justify-between rounded-xl border border-linen bg-paper px-4 py-3">

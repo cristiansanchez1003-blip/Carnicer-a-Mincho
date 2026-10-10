@@ -1,0 +1,50 @@
+name: CI
+
+# Verifica cada cambio de código: pruebas, lint y compilación de producción.
+# Los guardados del panel (solo tocan data/) y los textos (*.md, docs/) no lo ejecutan:
+# no cambian el código y llegan a ser decenas por día.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - 'docs/**'
+      - '**/*.md'
+  pull_request:
+    paths-ignore:
+      - 'data/**'
+      - 'docs/**'
+      - '**/*.md'
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Pruebas automáticas
+        run: npm test
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Compilación de producción
+        run: npm run build

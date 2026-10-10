@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { checkGithub, checkImages, checkSite, tokenDaysLeft } from '../lib/health.js'
+import { checkGithub, checkImages, checkSite, tokenAlert, tokenDaysLeft } from '../lib/health.js'
 
 const res = (status, { body = '', headers = {} } = {}) => ({
   ok: status >= 200 && status < 300,
@@ -140,4 +140,43 @@ test('Sitio: una versión de vista previa avisa que no es el sitio real', () => 
 test('Sitio: en local no hay nada que advertir', () => {
   const r = checkSite({ vercelEnv: undefined, deployBranch: undefined, dataBranch: 'master' })
   assert.equal(r.level, 'ok')
+})
+
+// ---------- Aviso de vencimiento del token (para el panel) ----------
+
+test('GitHub: un token rechazado trae un código para poder avisar en el panel', async () => {
+  const r = await checkGithub(gh, { fetchImpl: async () => res(401, { body: { message: 'Bad credentials' } }) })
+  assert.equal(r.code, 'token-invalid')
+})
+
+test('tokenAlert: sin problemas, sin fecha de vencimiento o con mucho margen no avisa', () => {
+  assert.equal(tokenAlert(null), null)
+  assert.equal(tokenAlert({ level: 'ok', daysLeft: null }), null)
+  assert.equal(tokenAlert({ level: 'ok', daysLeft: 16 }), null)
+  assert.equal(tokenAlert({ level: 'warn', message: 'Falta GITHUB_TOKEN' }), null) // modo local: no es un vencimiento
+  assert.equal(tokenAlert({ level: 'error', message: 'No se pudo conectar' }), null) // una caída de red no es un aviso de token
+})
+
+test('tokenAlert: 15 días o menos avisa, y cada vez más urgente', () => {
+  assert.equal(tokenAlert({ daysLeft: 15 }).level, 'warn')
+  assert.match(tokenAlert({ daysLeft: 15 }).message, /vence en 15 días/)
+  assert.match(tokenAlert({ daysLeft: 2 }).message, /vence en 2 días/)
+  assert.equal(tokenAlert({ daysLeft: 2 }).level, 'error')
+  assert.match(tokenAlert({ daysLeft: 1 }).message, /vence mañana/)
+  assert.match(tokenAlert({ daysLeft: 0 }).message, /vence hoy/)
+  assert.match(tokenAlert({ daysLeft: -1 }).message, /ya venció/)
+})
+
+test('tokenAlert: un token rechazado es un aviso de error y nombra a quién avisar', () => {
+  const a = tokenAlert({ level: 'error', code: 'token-invalid' })
+  assert.equal(a.level, 'error')
+  assert.match(a.message, /no se podrán guardar cambios/)
+  assert.match(a.message, /Espíritu Digital/)
+})
+
+test('GitHub: el mensaje habla de "1 día" en singular', async () => {
+  const now = Date.UTC(2026, 9, 8)
+  const fetchImpl = async () => res(200, { headers: { 'github-authentication-token-expiration': '2026-10-09 12:00:00 UTC' } })
+  const r = await checkGithub(gh, { fetchImpl, now })
+  assert.match(r.message, /vence en 1 día\b/)
 })

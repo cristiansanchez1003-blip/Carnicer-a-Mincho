@@ -1,5 +1,6 @@
 'use client'
 
+import { HIGHLIGHT_LABELS, isHighlight } from '@/lib/highlights'
 import { formatPrice } from '@/lib/format'
 
 // Lista de productos de una categoría con acciones rápidas:
@@ -29,7 +30,17 @@ export default function ProductTable({
           </div>
 
           <button onClick={() => onEdit(p)} className="min-w-0 flex-1 text-left">
-            <span className="block truncate text-[13.5px] font-bold text-ink">{p.name}</span>
+            <span className="block truncate text-[13.5px] font-bold text-ink">
+              {isHighlight(p.highlight) && (
+                <span
+                  className="mr-1.5 rounded-full bg-gold/25 px-1.5 py-0.5 align-middle text-[10px] font-bold uppercase text-[#6b5200]"
+                  title="Producto destacado"
+                >
+                  ⭐ {HIGHLIGHT_LABELS.es[p.highlight]}
+                </span>
+              )}
+              {p.name}
+            </span>
             <span className="block text-[12.5px] font-semibold text-forest">
               {formatPrice(p.price, p.unit)}
               {p.available === false && (

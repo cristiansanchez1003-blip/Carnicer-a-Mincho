@@ -8,6 +8,7 @@ import { useOrder } from '@/contexts/OrderContext'
 import QuantityStepper from './QuantityStepper'
 import { localizedField } from '@/lib/i18n'
 import { useApp } from '@/contexts/AppContext'
+import HighlightBadge from './HighlightBadge'
 import ProductImage from './ProductImage'
 
 // Selector de cantidad y botón "Agregar al pedido" dentro del modal.
@@ -147,6 +148,7 @@ export default function ProductModal({ product, emoji, onClose }) {
             />
 
             <div className="px-6 pb-7 pt-5">
+              {product.highlight && <HighlightBadge value={product.highlight} className="mb-2" />}
               <div className="flex items-start justify-between gap-4">
                 <h3 className="font-playfair text-[22px] font-bold leading-tight text-ink dark:text-paper">
                   {name}

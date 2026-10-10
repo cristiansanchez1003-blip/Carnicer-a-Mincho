@@ -10,6 +10,8 @@ Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Frame
 
 - **Menú público** (`/menu`) — 6 categorías y 40 productos de ejemplo (cortes chilenos: lomo vetado, punta de ganso, posta rosada, longaniza de Chillán…). Hero con el logotipo, navegación de categorías, modal de producto tipo bottom-sheet, precios con **unidad de venta** ($/kg, c/u, /docena), footer con **mapa de Google embebido**, WhatsApp y horario, y botón flotante de WhatsApp. 100 % mobile-first.
 - **Pedido por WhatsApp** — el cliente agrega productos (de a 0,5 kg), ve el total estimado y se abre WhatsApp con el mensaje ya escrito para la carnicería (los nombres siempre en español). El pedido queda guardado en su celular.
+- **Buscador** — el cliente escribe "lomo", "ribeye" o "parrilla" y ve los productos de todas las categorías que coinciden (nombre o descripción, español o inglés, sin importar tildes ni mayúsculas).
+- **Productos destacados** — el dueño marca productos como "Recién llegado", "Del día" o "Recomendado"; aparecen primero en la pestaña "⭐ Destacados" y con una etiqueta. Nada se destaca por defecto.
 - **Aviso en la portada** — mensaje destacado para feriados, "hoy cerrado" o llegada de producto, con versión en inglés y fecha límite opcional (se esconde solo). Parte vacío.
 - **Llamar y reseñas** — botones "Llamar" y "Dejar una reseña en Google" en el pie; aparecen solo si se completan en Ajustes.
 - **"Abierto ahora"** — el horario se define por día en el panel (hasta 3 tramos) y el menú muestra si está abierto en hora de Chile; el pie muestra la tabla de horarios.
@@ -24,6 +26,7 @@ Construido con **Next.js 16 (App Router) y React 19**, **Tailwind CSS**, **Frame
   - Ajustes del local: horario, dirección, mapa embebido, WhatsApp, Instagram (opcional), correo (opcional), eslogan.
   - Código QR descargable en PNG.
   - Pestaña **Ayuda** con las tareas de todos los días paso a paso, y aviso antes de salir con cambios sin guardar.
+  - Aviso arriba del panel cuando el acceso de GitHub (el que permite guardar) vence en 15 días o menos.
 - **Persistencia sin base de datos**: cada "Guardar cambios" hace un commit de `data/menu.json` al repo vía API de GitHub. Los cambios se ven en el menú público en segundos (no requiere redeploy).
 
 ---
@@ -72,7 +75,7 @@ npm run dev
 ### Comprobaciones
 
 ```bash
-npm test        # pruebas automáticas (lib/): autenticación, fotos, GitHub, validación del menú
+npm test        # pruebas automáticas (lib/): autenticación, fotos, GitHub, validación del menú, búsqueda (también corren solas en GitHub Actions)
 npm run lint    # ESLint
 npm run build   # compilación de producción
 ```

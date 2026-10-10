@@ -5,6 +5,7 @@ import { formatPrice } from '@/lib/format'
 import { localizedField } from '@/lib/i18n'
 import { useApp } from '@/contexts/AppContext'
 import { useOrder } from '@/contexts/OrderContext'
+import HighlightBadge from './HighlightBadge'
 import ProductImage from './ProductImage'
 import QuantityStepper from './QuantityStepper'
 
@@ -28,6 +29,7 @@ export default function ProductCard({ product, emoji, onSelect }) {
     >
       <div className="min-w-0 flex-1 py-0.5">
         <button type="button" onClick={() => onSelect(product)} className="block w-full text-left">
+          {product.highlight && <HighlightBadge value={product.highlight} className="mb-1" />}
           <h4 className="font-lato text-[15px] font-bold leading-snug text-ink dark:text-paper">
             {name}
           </h4>

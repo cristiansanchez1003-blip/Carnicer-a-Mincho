@@ -38,6 +38,14 @@ const TOPICS = [
     ],
   },
   {
+    title: '⭐ Destacar un producto',
+    steps: [
+      'En Productos, toca el producto y elige una opción en “Destacar en el menú” (Recién llegado, Del día o Recomendado).',
+      'Toca “Guardar producto” y luego “Guardar cambios”.',
+      'Los destacados disponibles aparecen primero en el menú, en la pestaña “⭐ Destacados”. Para quitarlo, elige “No destacar”.',
+    ],
+  },
+  {
     title: '📢 Poner un aviso en la portada (feriados, hoy cerrado)',
     steps: [
       'Ve a Ajustes → “Aviso en la portada” y escribe el mensaje.',
